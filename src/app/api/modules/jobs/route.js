@@ -4,7 +4,7 @@ export async function POST(req) {
   try {
     const body = await req.json();
 
-    const response = await fetch("http://3.150.128.40:5000/jobs", {
+    const response = await fetch("http://3.144.223.147:5000/jobs", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

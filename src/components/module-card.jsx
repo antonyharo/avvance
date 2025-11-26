@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 import {
@@ -8,14 +9,15 @@ import {
   DialogContent,
   DialogTitle,
 } from "./ui/dialog";
+import { Button } from "./ui/button";
 
-export default function ModuleCard({ module }) {
+export default function ModuleCard({ module, mode }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Card
           key={module.title}
-          className="cursor-pointer text-left gap-2 transition duration-200 hover:border-purple-400 hover:-translate-y-1"
+          className="cursor-pointer text-left gap-2 transition duration-200 hover:border-dashed hover:border-purple-400 hover:shadow-purple-400"
         >
           <CardHeader>
             <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-purple-100 dark:bg-purple-900/40">
@@ -49,8 +51,17 @@ export default function ModuleCard({ module }) {
 
         <div className="mt-1 space-y-7">
           <p className="text-primary/70 text-center">{module.description}</p>
-          <div className="text-lg whitespace-pre-line">
+          <div className="text-lg whitespace-pre-line text-center">
             {module.instructions}
+            {mode === "dashboard" ? (
+              <Button className={"mx-auto mt-8"}>
+                <Link href={module.url} size="lg">
+                  Ir para o módulo
+                </Link>
+              </Button>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </DialogContent>

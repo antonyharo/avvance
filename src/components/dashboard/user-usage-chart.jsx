@@ -1,16 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  AreaChart,
-  Area,
-  BarChart,
-  Bar,
-  LineChart,
-  Line,
-  CartesianGrid,
-  XAxis,
-} from "recharts";
+import { BarChart, Bar, CartesianGrid, XAxis } from "recharts";
 import {
   Card,
   CardHeader,
@@ -59,17 +50,17 @@ function generateUsageData(days) {
 
 // 🔹 Configuração de cores e rótulos
 const chartConfig = {
-  usoGeral: { label: "Uso Geral", color: "#7C3AED" }, // roxo
-  vagasBuscadas: { label: "Vagas Buscadas", color: "#10B981" }, // verde
-  analisesCurriculo: { label: "Análises de Currículo", color: "#FBBF24" }, // amarelo
-  treinosEntrevista: { label: "Treinos de Entrevista", color: "#3B82F6" }, // azul
+  usoGeral: { label: "Uso Geral", color: "#7C3AED" },
+  vagasBuscadas: { label: "Vagas Buscadas", color: "#10B981" },
+  analisesCurriculo: { label: "Análises de Currículo", color: "#FBBF24" },
+  treinosEntrevista: { label: "Treinos de Entrevista", color: "#3B82F6" },
 };
 
 export function UserUsageChart() {
   const isMobile = useIsMobile();
   const [timeRange, setTimeRange] = React.useState("30d");
   const [data, setData] = React.useState(generateUsageData(30));
-  const [chartType, setChartType] = React.useState("area"); // 🔹 JSX puro, apenas string
+  const chartType = "bar"; // 🔹 Sempre barra
 
   React.useEffect(() => {
     if (timeRange === "7d") setData(generateUsageData(7));
@@ -78,74 +69,8 @@ export function UserUsageChart() {
   }, [timeRange]);
 
   const renderChart = () => {
-    if (chartType === "bar") {
-      return (
-        <BarChart data={data}>
-          <CartesianGrid vertical={false} />
-          <XAxis
-            dataKey="date"
-            tickLine={false}
-            axisLine={false}
-            tickMargin={8}
-          />
-          <ChartTooltip content={<ChartTooltipContent />} />
-          <ChartLegend content={<ChartLegendContent />} />
-          {Object.keys(chartConfig).map((key) => (
-            <Bar
-              key={key}
-              dataKey={key}
-              fill={chartConfig[key].color}
-              radius={4}
-            />
-          ))}
-        </BarChart>
-      );
-    }
-
-    if (chartType === "line") {
-      return (
-        <LineChart data={data}>
-          <CartesianGrid vertical={false} />
-          <XAxis
-            dataKey="date"
-            tickLine={false}
-            axisLine={false}
-            tickMargin={8}
-          />
-          <ChartTooltip content={<ChartTooltipContent />} />
-          <ChartLegend content={<ChartLegendContent />} />
-          {Object.keys(chartConfig).map((key) => (
-            <Line
-              key={key}
-              type="monotone"
-              dataKey={key}
-              stroke={chartConfig[key].color}
-              strokeWidth={2}
-              dot={{ r: 3 }}
-            />
-          ))}
-        </LineChart>
-      );
-    }
-
-    // default: area chart
     return (
-      <AreaChart data={data}>
-        <defs>
-          {Object.entries(chartConfig).map(([key, conf]) => (
-            <linearGradient
-              key={key}
-              id={`fill${key}`}
-              x1="0"
-              y1="0"
-              x2="0"
-              y2="1"
-            >
-              <stop offset="5%" stopColor={conf.color} stopOpacity={0.4} />
-              <stop offset="95%" stopColor={conf.color} stopOpacity={0.05} />
-            </linearGradient>
-          ))}
-        </defs>
+      <BarChart data={data}>
         <CartesianGrid vertical={false} />
         <XAxis
           dataKey="date"
@@ -156,24 +81,22 @@ export function UserUsageChart() {
         <ChartTooltip content={<ChartTooltipContent />} />
         <ChartLegend content={<ChartLegendContent />} />
         {Object.keys(chartConfig).map((key) => (
-          <Area
+          <Bar
             key={key}
-            type="monotone"
             dataKey={key}
-            stroke={chartConfig[key].color}
-            fill={`url(#fill${key})`}
-            strokeWidth={2}
+            fill={chartConfig[key].color}
+            radius={4}
           />
         ))}
-      </AreaChart>
+      </BarChart>
     );
   };
 
   return (
-    <Card className="@container/card">
+    <Card className="@container/card border-dashed transition-all hover:border-purple-400">
       <CardHeader className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div>
-          <CardTitle>📈 Seu uso na plataforma</CardTitle>
+          <CardTitle className={"mb-3"}>📈 Seu uso na plataforma</CardTitle>
           <CardDescription>
             Acompanhe suas atividades nos últimos dias
           </CardDescription>
@@ -203,18 +126,6 @@ export function UserUsageChart() {
               <SelectItem value="90d">90 dias</SelectItem>
             </SelectContent>
           </Select>
-
-          {/* Controle de tipo de gráfico */}
-          <ToggleGroup
-            type="single"
-            value={chartType}
-            onValueChange={setChartType}
-            variant="outline"
-          >
-            <ToggleGroupItem value="area">Área</ToggleGroupItem>
-            <ToggleGroupItem value="line">Linha</ToggleGroupItem>
-            <ToggleGroupItem value="bar">Barra</ToggleGroupItem>
-          </ToggleGroup>
         </div>
       </CardHeader>
 

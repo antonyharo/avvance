@@ -37,12 +37,12 @@ export default function LandingPage() {
   const { openSignUp } = useClerk();
 
   return (
-    <main className="p-10 min-h-screen bg-gradient-to-b from-background to-background">
-      <header>
-        <nav className="container mx-auto flex items-center justify-around py-7 bg-gradient-to-tr from-purple-400 to-background rounded-2xl">
-          <h1 className="flex items-center gap-2 text-3xl font-bold mb-1">
+    <main className="p-10 min-h-screen">
+      <header className="fixed w-full">
+        <nav className="container flex backdrop-blur-md items-center justify-around py-6 border-purple-400 border-b border-dashed rounded-2xl">
+          <h1 className="flex items-center gap-2 text-5xl font-bold mb-1">
             <span className="text-purple-400">
-              <Sparkles size={25} />
+              <Sparkles size={30} />
             </span>
             Avvance
           </h1>
@@ -81,7 +81,7 @@ export default function LandingPage() {
       </header>
 
       {/* Hero */}
-      <section className="w-full container mx-auto px-6 py-12 flex flex-col md:flex-row items-center gap-8">
+      <section className="w-full container mx-auto mt-30 px-6 py-12 flex flex-col md:flex-row items-center gap-8">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
