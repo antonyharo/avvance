@@ -7,21 +7,6 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
-export async function saveUsageLog(moduleName, creditsUsed = 1, userId) {
-  const { error } = await supabase.from("usage_logs").insert({
-    module_name: moduleName,
-    credits_used: creditsUsed,
-    user_id: userId,
-  });
-
-  if (error) {
-    console.error("Erro ao salvar log:", error);
-    throw new Error(
-      `Erro ao salvar log no Supabase: ${error.message || error}`
-    );
-  }
-}
-
 // olhar aqui pra ver se n dá pra ser na service role key
 export const uploadFile = async (file, token) => {
   try {

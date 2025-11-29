@@ -1,7 +1,18 @@
 import { NextResponse } from "next/server";
+import { getServiceRoleClient } from "@/lib/supabase/server";
+import { auth } from "@clerk/nextjs/server";
 
 export async function POST(req) {
   try {
+    const { userId } = await auth(req);
+
+    if (!userId) {
+      return NextResponse.json(
+        { error: "Usuário não autenticado" },
+        { status: 401 }
+      );
+    }
+
     const body = await req.json();
 
     const response = await fetch("http://3.144.223.147:5000/jobs", {
@@ -18,6 +29,22 @@ export async function POST(req) {
       return NextResponse.json(
         { error: result.error || "Erro ao buscar empregos" },
         { status: response.status }
+      );
+    }
+
+    const supabase = getServiceRoleClient();
+
+    const { error } = await supabase.from("usage_logs").insert([
+      {
+        user_id: userId,
+        module: "jobs",
+        output: result,
+      },
+    ]);
+
+    if (error) {
+      throw new Error(
+        `Erro ao buscar dados das análises: ${error.message || error}`
       );
     }
 

@@ -4,7 +4,6 @@ import {
   User,
   FileHeart,
   MessageCircleQuestion,
-  FileUser,
   Gavel,
   TextSearch,
   MoveRight,
