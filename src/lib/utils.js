@@ -7,6 +7,27 @@ export function cn(...inputs) {
   return twMerge(clsx(inputs));
 }
 
+export function formatToBrasilia(datetime) {
+  const date = new Date(datetime);
+
+  const options = {
+    timeZone: "America/Sao_Paulo",
+    hour: "2-digit",
+    minute: "2-digit",
+  };
+
+  const time = date.toLocaleTimeString("pt-BR", options);
+
+  const day = date.toLocaleString("pt-BR", {
+    timeZone: "America/Sao_Paulo",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+
+  return `${time}  ${day}`;
+}
+
 export function getDatetime() {
   const now = new Date();
 

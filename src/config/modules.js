@@ -122,7 +122,7 @@ export const modules = [
     ),
   },
   {
-    title: "Match de Candidato x Vaga",
+    title: "Match de Vagas",
     url: "/dashboard/candidate-job-match",
     icon: FileHeart,
     category: "Análise de Aderência",

@@ -58,7 +58,7 @@ const chartConfig = {
 
 export function UserUsageChart() {
   const isMobile = useIsMobile();
-  const [timeRange, setTimeRange] = React.useState("30d");
+  const [timeRange, setTimeRange] = React.useState("7d");
   const [data, setData] = React.useState(generateUsageData(30));
   const chartType = "bar"; // 🔹 Sempre barra
 

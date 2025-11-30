@@ -256,7 +256,7 @@ export default function LandingPage() {
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 size={18} className="text-emerald-500" />
-                Match de Candidato x Vaga
+                Match de Vagas
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 size={18} className="text-emerald-500" />

@@ -1,0 +1,65 @@
+{
+  "jobs": {
+    "title": "Explorador de Vagas",
+    "url": "/dashboard/jobs",
+    "icon": "Briefcase",
+    "category": "Busca de Vagas",
+    "description": "Explore oportunidades de trabalho com recursos avançados de filtragem e acesso direto às principais plataformas, facilitando a identificação das vagas mais alinhadas ao seu perfil.",
+    "shortDescription": "Encontre vagas ideais com filtros e acesso direto às principais plataformas.",
+    "instructions": "Preencha as informações para filtrar vagas → Resultados de vagas para você"
+  },
+  "analyzer": {
+    "title": "Analisador de Currículos",
+    "url": "/dashboard/cv-analyzer",
+    "icon": "TextSearch",
+    "category": "Análise de Currículos",
+    "description": "Envie currículos para uma IA e receba insights estratégicos juntamente com descrições e pontuações assertivas para conhecer melhor o candidato, sua área de atuação e seu posicionamento no mercado de trabalho.",
+    "shortDescription": "Analise currículos com IA e descubra o perfil completo do candidato.",
+    "instructions": "Anexe seu currículo → Uma revisão completa do seu currículo"
+  },
+  "reviewer": {
+    "title": "Revisor de Currículos",
+    "url": "/dashboard/cv-reviewer",
+    "icon": "Gavel",
+    "category": "Análise de Currículos",
+    "description": "Envie currículos para uma IA e receba insights estratégicos juntamente com descrições e pontuações assertivas para otimizá-lo, aumentando as chances de se destacar nas próximas oportunidades.",
+    "shortDescription": "Otimize currículos com IA para aumentar suas chances no mercado.",
+    "instructions": "Anexe seu currículo → Análise completa do seu currículo"
+  },
+  "profile-generator": {
+    "title": "Gerador de Perfis",
+    "url": "/dashboard/profile-generator",
+    "icon": "UserCheck",
+    "category": "Criação de Perfis",
+    "description": "Crie perfis otimizados a partir de uma vaga, receba sugestões inteligentes de competências e habilidades, e analise candidatos com insights precisos para encontrar a combinação ideal para a sua necessidade.",
+    "shortDescription": "Crie perfis estratégicos com base em vagas e habilidades desejadas.",
+    "instructions": "Preencha as informações de uma vaga → Um perfil incrível gerado"
+  },
+  "linkedin-generator": {
+    "title": "Gerador de Linkedin",
+    "url": "/dashboard/linkedin-generator",
+    "icon": "User",
+    "category": "Criação de Perfis",
+    "description": "Faça o upload de um currículo e transforme-o automaticamente em um perfil profissional, no estilo LinkedIn, pronto para maximizar oportunidades, altamente otimizado para os altos padrões do mercado.",
+    "shortDescription": "Transforme currículos em perfis LinkedIn prontos para impressionar.",
+    "instructions": "Anexe seu currículo → Um perfil completo para colocar no seu LinkedIn"
+  },
+  "candidate-job-match": {
+    "title": "Match de Vagas",
+    "url": "/dashboard/candidate-job-match",
+    "icon": "FileHeart",
+    "category": "Análise de Aderência",
+    "description": "Realize análises estratégicas de currículos com base em vagas específicas. Receba relatórios profissionais que avaliam a aderência do candidato, destacam pontos fortes e oportunidades de melhoria, e ajudam a tomar decisões mais assertivas no recrutamento.",
+    "shortDescription": "Avalie o alinhamento entre currículos e vagas com inteligência.",
+    "instructions": "Anexe seu currículo → Preencha as informações de uma vaga → Uma análise de aderência completa"
+  },
+  "interview-simulator": {
+    "title": "Simulador de Entrevistas",
+    "url": "/dashboard/interview-simulator",
+    "icon": "MessageCircleQuestion",
+    "category": "Análise de Aderência",
+    "description": "Submeta um currículo e uma vaga para gerar um quiz de entrevista interativo. Responda perguntas baseadas no seu perfil e receba um score detalhado, com pontos fortes, GAPs de competência e recomendações de estudo para a vaga.",
+    "shortDescription": "Simule entrevistas reais com IA e receba feedback personalizado para sua preparação.",
+    "instructions": "Anexe seu currículo → Preencha as informações de uma vaga → Um quiz incrível para treinar entrevistas"
+  }
+}

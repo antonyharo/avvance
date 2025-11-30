@@ -9,6 +9,7 @@ import {
   DialogContent,
   DialogTitle,
 } from "./ui/dialog";
+
 import { Button } from "./ui/button";
 
 export default function ModuleCard({ module, mode }) {
@@ -17,7 +18,7 @@ export default function ModuleCard({ module, mode }) {
       <DialogTrigger asChild>
         <Card
           key={module.title}
-          className="cursor-pointer text-left gap-2 transition duration-200 hover:border-dashed hover:border-purple-400 hover:shadow-purple-400"
+          className="cursor-pointer text-left gap-2 transition duration-200 hover:border-purple-400 hover:shadow-purple-400"
         >
           <CardHeader>
             <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-purple-100 dark:bg-purple-900/40">
