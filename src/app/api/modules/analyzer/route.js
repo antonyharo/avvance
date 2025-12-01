@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenAI } from "@google/genai";
 import { getServiceRoleClient } from "@/lib/supabase/server";
 import { auth } from "@clerk/nextjs/server";
 import { analyzerPrompt } from "@/config/prompts";
@@ -26,9 +26,6 @@ export async function POST(req) {
       );
     }
 
-    const arrayBuffer = await file.arrayBuffer();
-    const base64File = Buffer.from(arrayBuffer).toString("base64");
-
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       console.error("Erro: API Key do Gemini não configurada.");
@@ -38,27 +35,23 @@ export async function POST(req) {
       );
     }
 
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const arrayBuffer = await file.arrayBuffer();
+    const base64File = Buffer.from(arrayBuffer).toString("base64");
 
-    const result = await model.generateContent({
+    const ai = new GoogleGenAI({});
+
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
       contents: [
+        { text: analyzerPrompt },
         {
-          role: "user",
-          parts: [
-            { text: analyzerPrompt },
-            {
-              inlineData: {
-                mimeType: "application/pdf",
-                data: base64File,
-              },
-            },
-          ],
+          inlineData: {
+            mimeType: "application/pdf",
+            data: base64File,
+          },
         },
       ],
     });
-
-    const output = await result.response.text();
 
     const supabase = getServiceRoleClient();
 
@@ -66,7 +59,7 @@ export async function POST(req) {
       {
         user_id: userId,
         module: "analyzer",
-        output: output,
+        output: response.text,
       },
     ]);
 
@@ -76,7 +69,7 @@ export async function POST(req) {
       );
     }
 
-    return NextResponse.json({ output }, { status: 200 });
+    return NextResponse.json({ output: response.text }, { status: 200 });
   } catch (error) {
     console.error("Erro ao processar o arquivo:", error);
     return NextResponse.json(

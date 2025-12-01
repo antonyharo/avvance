@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenAI } from "@google/genai";
 import { linkedinGeneratorPrompt } from "@/config/prompts";
 import { getServiceRoleClient } from "@/lib/supabase/server";
 import { auth } from "@clerk/nextjs/server";
@@ -36,27 +36,20 @@ export async function POST(req) {
       );
     }
 
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const ai = new GoogleGenAI({});
 
-    const result = await model.generateContent({
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
       contents: [
+        { text: linkedinGeneratorPrompt },
         {
-          role: "user",
-          parts: [
-            { text: linkedinGeneratorPrompt },
-            {
-              inlineData: {
-                mimeType: "application/pdf",
-                data: base64File,
-              },
-            },
-          ],
+          inlineData: {
+            mimeType: "application/pdf",
+            data: base64File,
+          },
         },
       ],
     });
-
-    const output = await result.response.text();
 
     const supabase = getServiceRoleClient();
 
@@ -64,7 +57,7 @@ export async function POST(req) {
       {
         user_id: userId,
         module: "linkedin-generator",
-        output: output,
+        output: response.text,
       },
     ]);
 
@@ -74,7 +67,7 @@ export async function POST(req) {
       );
     }
 
-    return NextResponse.json({ output }, { status: 200 });
+    return NextResponse.json({ output: response.text }, { status: 200 });
   } catch (error) {
     console.error("Erro ao processar o currículo:", error);
     return NextResponse.json(

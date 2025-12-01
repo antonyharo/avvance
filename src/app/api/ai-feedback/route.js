@@ -1,10 +1,8 @@
 import { NextResponse } from "next/server";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenAI } from "@google/genai";
 
 export async function POST(req) {
   try {
-    console.log("Recebendo requisição de feedback...");
-
     const { resultData } = await req.json();
 
     if (!resultData) {
@@ -15,11 +13,6 @@ export async function POST(req) {
       );
     }
 
-    console.log("Dados do resultado recebidos:", {
-      score: resultData.score,
-      totalQuestions: resultData.summary?.totalQuestions,
-    });
-
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       console.error("Erro: API Key do Gemini não configurada.");
@@ -28,10 +21,6 @@ export async function POST(req) {
         { status: 500 }
       );
     }
-
-    console.log("Gerando feedback personalizado...");
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     // Construir o prompt detalhado para análise
     const prompt = `
@@ -121,18 +110,17 @@ export async function POST(req) {
             **IDIOMA:** Português brasileiro
         `;
 
-    const result = await model.generateContent(prompt);
+    const ai = new GoogleGenAI({});
 
-    console.log("Feedback recebido do Gemini. Processando...");
-
-    const feedback = await result.response.text();
-
-    console.log("Feedback gerado com sucesso.");
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: prompt,
+    });
 
     return NextResponse.json(
       {
         success: true,
-        feedback: feedback,
+        feedback: response.text,
       },
       { status: 200 }
     );
