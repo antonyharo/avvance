@@ -29,7 +29,7 @@ export default function Page() {
         body: formData,
       });
 
-      if (!response.ok) { 
+      if (!response.ok) {
         throw new Error("Erro no upload ou análise");
       }
 
@@ -48,6 +48,7 @@ export default function Page() {
 
   return (
     <PageTemplate
+      moduleName="analyzer"
       icon={<TextSearch />}
       title={"Analisador de Currículos"}
       description={

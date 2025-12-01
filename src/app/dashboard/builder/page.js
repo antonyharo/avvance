@@ -3,14 +3,13 @@
 import { useState } from "react";
 import { FileText } from "lucide-react";
 
-import { useCvForm } from "@/hooks/use-cv-form";
-import CvBuilderForm from "@/components/cv-builder-form";
+import { useCvForm } from "@/hooks/use-form";
+import CvBuilderForm from "@/components/builder-form";
 import PageTemplate from "@/components/dashboard/page-template";
 import AiOutput from "@/components/dashboard/ai-output";
 
 export default function Page() {
-  const { register, handleSubmit, errors, isSubmitting, onReset } =
-    useCvForm();
+  const { register, handleSubmit, errors, isSubmitting, onReset } = useCvForm();
 
   const [output, setOutput] = useState(null);
   const [error, setError] = useState(null);
@@ -20,7 +19,7 @@ export default function Page() {
     setOutput(null);
 
     try {
-      const response = await fetch("/api/modules/cv-builder", {
+      const response = await fetch("/api/modules/builder", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

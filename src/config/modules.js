@@ -35,7 +35,7 @@ export const modules = [
   },
   {
     title: "Analisador de Currículos",
-    url: "/dashboard/cv-analyzer",
+    url: "/dashboard/analyzer",
     icon: TextSearch,
     category: "Análise de Currículos",
     description:
@@ -57,7 +57,7 @@ export const modules = [
   },
   {
     title: "Revisor de Currículos",
-    url: "/dashboard/cv-reviewer",
+    url: "/dashboard/reviewer",
     icon: Gavel,
     category: "Análise de Currículos",
     description:
@@ -149,7 +149,7 @@ export const modules = [
   },
   // {
   //   title: "Criador de Currículos",
-  //   url: "/dashboard/cv-builder",
+  //   url: "/dashboard/builder",
   //   icon: FileUser,
   //   category: "Criação de Currículos",
   //   description:

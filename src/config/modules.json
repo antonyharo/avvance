@@ -10,7 +10,7 @@
   },
   "analyzer": {
     "title": "Analisador de Currículos",
-    "url": "/dashboard/cv-analyzer",
+    "url": "/dashboard/analyzer",
     "icon": "TextSearch",
     "category": "Análise de Currículos",
     "description": "Envie currículos para uma IA e receba insights estratégicos juntamente com descrições e pontuações assertivas para conhecer melhor o candidato, sua área de atuação e seu posicionamento no mercado de trabalho.",
@@ -19,7 +19,7 @@
   },
   "reviewer": {
     "title": "Revisor de Currículos",
-    "url": "/dashboard/cv-reviewer",
+    "url": "/dashboard/reviewer",
     "icon": "Gavel",
     "category": "Análise de Currículos",
     "description": "Envie currículos para uma IA e receba insights estratégicos juntamente com descrições e pontuações assertivas para otimizá-lo, aumentando as chances de se destacar nas próximas oportunidades.",
