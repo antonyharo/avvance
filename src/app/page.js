@@ -38,7 +38,7 @@ export default function LandingPage() {
 
   return (
     <main className="p-10 min-h-screen">
-      <header className="fixed w-full">
+      <header className="z-50 fixed w-full">
         <nav className="container flex backdrop-blur-md items-center justify-around py-6 border-purple-400 border-b border-dashed rounded-2xl">
           <h1 className="flex items-center gap-2 text-5xl font-bold mb-1">
             <span className="text-purple-400">

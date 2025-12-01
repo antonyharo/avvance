@@ -72,15 +72,16 @@ export default function JobForm({
         <BriefcaseBusiness size={18} /> Informações da vaga
       </Label>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="grid gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Campo grande → ocupa 2 colunas */}
+        <div className="md:col-span-2 grid gap-3">
           <Label htmlFor="title" className="flex items-center gap-2">
             <MessageSquareText size={15} /> Título da Vaga:
             <span className="text-red-500">*</span>
           </Label>
           <Input
             id="title"
-            placeholder="Ex: Desenvolvedor Front-end"
+            placeholder="Ex: Administrador de Banco de Dados na Avvance"
             {...register("title")}
           />
           {errors.title && (
@@ -88,6 +89,7 @@ export default function JobForm({
           )}
         </div>
 
+        {/* Campo menor → ocupa 1 coluna */}
         <div className="grid gap-3">
           <Label htmlFor="salary" className="flex items-center gap-2">
             <DollarSign size={15} /> Salário (opcional):
@@ -117,7 +119,7 @@ export default function JobForm({
         <Textarea
           id="description"
           placeholder="Inclua responsabilidades, requisitos, tecnologias, etc."
-          className="min-h-[180px] w-2xl"
+          className="min-h-[180px] w-full"
           {...register("description")}
         />
         {errors.description && (

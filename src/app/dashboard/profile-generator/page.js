@@ -7,6 +7,7 @@ import { useJobForm } from "@/hooks/use-job-form";
 import JobForm from "@/components/job-form";
 import PageTemplate from "@/components/dashboard/page-template";
 import AiOutput from "@/components/dashboard/ai-output";
+import OutputSkeleton from "@/components/skeleton-output";
 
 export default function Page() {
   const { register, handleSubmit, errors, isSubmitting, onReset } =
@@ -60,6 +61,7 @@ export default function Page() {
       />
 
       <AiOutput output={output} />
+      <OutputSkeleton />
     </PageTemplate>
   );
 }

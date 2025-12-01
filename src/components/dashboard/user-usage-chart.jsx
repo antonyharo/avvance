@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { BarChart, Bar, CartesianGrid, XAxis } from "recharts";
+import { BarChart, Bar, CartesianGrid, XAxis, LabelList } from "recharts";
 import {
   Card,
   CardHeader,
@@ -29,20 +29,29 @@ import { useIsMobile } from "@/hooks/use-mobile";
 // 🔹 Geração de dados fictícios
 function generateUsageData(days) {
   const data = [];
+
   const today = new Date();
+
   for (let i = days - 1; i >= 0; i--) {
     const date = new Date();
     date.setDate(today.getDate() - i);
+
     const dayLabel = date.toLocaleDateString("pt-BR", {
       day: "2-digit",
       month: "2-digit",
     });
+
+    const vagasBuscadas = Math.floor(Math.random() * 8);
+    const analisesCurriculo = Math.floor(Math.random() * 6);
+    const treinosEntrevista = Math.floor(Math.random() * 4);
+    const usoGeral = vagasBuscadas + analisesCurriculo + treinosEntrevista;
+
     data.push({
       date: dayLabel,
-      usoGeral: Math.floor(Math.random() * 10) + 5,
-      vagasBuscadas: Math.floor(Math.random() * 8) + 2,
-      analisesCurriculo: Math.floor(Math.random() * 6) + 1,
-      treinosEntrevista: Math.floor(Math.random() * 4) + 1,
+      usoGeral,
+      vagasBuscadas,
+      analisesCurriculo,
+      treinosEntrevista,
     });
   }
   return data;
@@ -51,9 +60,9 @@ function generateUsageData(days) {
 // 🔹 Configuração de cores e rótulos
 const chartConfig = {
   usoGeral: { label: "Uso Geral", color: "#7C3AED" },
-  vagasBuscadas: { label: "Vagas Buscadas", color: "#10B981" },
-  analisesCurriculo: { label: "Análises de Currículo", color: "#FBBF24" },
-  treinosEntrevista: { label: "Treinos de Entrevista", color: "#3B82F6" },
+  vagasBuscadas: { label: "Vagas Buscadas", color: "#a158e1" },
+  analisesCurriculo: { label: "Análises de Currículo", color: "#ca85ff" },
+  treinosEntrevista: { label: "Treinos de Entrevista", color: "#e3bdff" },
 };
 
 export function UserUsageChart() {
@@ -81,12 +90,14 @@ export function UserUsageChart() {
         <ChartTooltip content={<ChartTooltipContent />} />
         <ChartLegend content={<ChartLegendContent />} />
         {Object.keys(chartConfig).map((key) => (
-          <Bar
-            key={key}
-            dataKey={key}
-            fill={chartConfig[key].color}
-            radius={4}
-          />
+          <Bar key={key} dataKey={key} fill={chartConfig[key].color} radius={4}>
+            <LabelList
+              dataKey={key}
+              position="top"
+              offset={8}
+              className="fill-muted-foreground text-[11px] font-medium"
+            />
+          </Bar>
         ))}
       </BarChart>
     );
