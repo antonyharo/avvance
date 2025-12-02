@@ -104,9 +104,7 @@ export default function Page() {
     <PageTemplate
       title={"Explorador de Vagas"}
       icon={<Briefcase />}
-      description={
-        "Explore oportunidades de trabalho com recursos avançados de filtragem e acesso direto às principais plataformas, facilitando a identificação das vagas mais alinhadas ao seu perfil."
-      }
+      moduleName={"jobs"}
       error={error}
     >
       <form onSubmit={handleSubmit(onSubmit)} className="w-xl space-y-8">

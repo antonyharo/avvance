@@ -46,9 +46,7 @@ export default function Page() {
     <PageTemplate
       title={"Gerador de Linkedin"}
       icon={<User />}
-      description={
-        "Faça o upload de um currículo e transforme-o automaticamente em um perfil profissional, no estilo LinkedIn, pronto para maximizar oportunidades, altamente otimizado para os altos padrões do mercado."
-      }
+      moduleName={"linkedin-generator"}
       error={error}
     >
       <form onSubmit={(event) => handleSubmit(event)} className="space-y-6">

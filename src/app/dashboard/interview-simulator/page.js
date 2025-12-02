@@ -55,9 +55,7 @@ export default function Page() {
     <PageTemplate
       title={"Simulador de Entrevistas"}
       icon={<MessageCircleQuestion />}
-      description={
-        "Submeta um currículo e uma vaga para gerar um quiz de entrevista interativo. Responda perguntas baseadas no seu perfil e receba um score detalhado, com pontos fortes, GAPs de competência e recomendações de estudo para a vaga."
-      }
+      moduleName={"interview-simulator"}
       error={error}
     >
       <FileInput setFile={setFile} />

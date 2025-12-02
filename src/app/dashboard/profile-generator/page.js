@@ -46,9 +46,7 @@ export default function Page() {
     <PageTemplate
       title={"Gerador de Perfis"}
       icon={<UserCheck />}
-      description={
-        "Crie perfis otimizados a partir de uma vaga, receba sugestões inteligentes de competências e habilidades, e analise candidatos com insights precisos para encontrar a combinação ideal para a sua necessidade."
-      }
+      moduleName={"profile-generator"}
       error={error}
     >
       <JobForm

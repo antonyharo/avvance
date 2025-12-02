@@ -51,9 +51,6 @@ export default function Page() {
       moduleName="analyzer"
       icon={<TextSearch />}
       title={"Analisador de Currículos"}
-      description={
-        "Envie currículos para uma IA e receba insights estratégicos juntamente com descrições e pontuações assertivas para conhecer melhor o candidato, sua área de atuação e seu posicionamento no mercado de trabalho."
-      }
       error={error}
     >
       <form onSubmit={(event) => handleSubmit(event)} className="space-y-6">

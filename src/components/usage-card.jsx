@@ -59,7 +59,7 @@ export default function UsageCard({ data }) {
           "
         >
           <CardHeader className="flex flex-row gap-4 items-center">
-            <Icon className="text-purple-400" size={20} />
+            <Icon className={moduleInfo.color.text} size={20} />
 
             <div className="flex-1 space-y-1">
               <CardTitle className="text-base">

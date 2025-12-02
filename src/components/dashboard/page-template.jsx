@@ -16,7 +16,8 @@ export default function PageTemplate({
         <span className="text-purple-500">{icon}</span> {title}
       </h1>
 
-      <p className="opacity-80 w-3xl mb-6">{moduleInfo.shortDescription}</p>
+      <p className="opacity-80 w-3xl mb-4">{moduleInfo.description}</p>
+      <p className="w-3xl mb-6 font-bold">{moduleInfo.instructions}</p>
 
       <span className="fixed right-0 top-1/2 z-50 flex h-14 w-11 -translate-y-1/2 items-center justify-center rounded-l-full bg-muted text-purple-400">
         {icon}

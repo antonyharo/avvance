@@ -55,9 +55,7 @@ export default function Page() {
     <PageTemplate
       title={"Match de Vagas"}
       icon={<FileHeart />}
-      description={
-        "Realize análises estratégicas de currículos com base em vagas específicas. Receba relatórios profissionais que avaliam a aderência do candidato, destacam pontos fortes e oportunidades de melhoria, e ajudam a tomar decisões mais assertivas no recrutamento."
-      }
+      moduleName={"candidate-job-match"}
       error={error}
     >
       <FileInput setFile={setFile} />

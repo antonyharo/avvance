@@ -62,14 +62,16 @@ export async function AppSidebar() {
                       <SidebarMenuButton
                         asChild
                         className={
-                          "transition duration-200 hover:text-purple-400"
+                          `transition duration-200 ${module.color.hover}`
                         }
                       >
                         <Link
                           href={module.url}
                           className="flex items-center text-sm "
                         >
-                          <span className="text-purple-400 flex justify-center items-center">
+                          <span
+                            className={`${module.color.text} flex justify-center items-center`}
+                          >
                             <module.icon size={16} />
                           </span>
 

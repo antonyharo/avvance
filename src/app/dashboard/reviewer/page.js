@@ -46,9 +46,7 @@ export default function Page() {
     <PageTemplate
       icon={<Gavel />}
       title={"Revisor de Currículos"}
-      description={
-        "Envie currículos para uma IA e receba insights estratégicos juntamente com descrições e pontuações assertivas para otimizá-lo, aumentando as chances de se destacar nas próximas oportunidades."
-      }
+      moduleName={"reviewer"}
       error={error}
     >
       <form onSubmit={(event) => handleSubmit(event)} className="space-y-6">
