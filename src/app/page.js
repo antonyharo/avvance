@@ -119,9 +119,8 @@ export default function LandingPage() {
               </div>
               <h1 className="text-3xl font-bold tracking-tight">Avvance</h1>
             </div>
-            <h1 className="text-md">A ciência por trás da sua contratação</h1>
           </div>
-          
+
           <div className="flex gap-4 items-center">
             <div className="hidden md:block">
               <ModeToggle />
@@ -155,7 +154,7 @@ export default function LandingPage() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+      <section className="relative pt-32 pb-20 lg:pt-35 lg:pb-20 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-purple-500/20 rounded-full blur-[120px] -z-10 opacity-50" />
 
@@ -206,11 +205,17 @@ export default function LandingPage() {
 
             <div className="mt-10 flex items-center justify-center lg:justify-start gap-6 text-sm text-muted-foreground">
               <div className="flex -space-x-3">
-                {[1, 2, 3, 4].map((i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 rounded-full border-2 border-background bg-gray-200"
-                  />
+                {testimonials.map((testimonial, index) => (
+                  <Avatar
+                    key={index}
+                    className="h-10 w-10 border-2 border-emerald-500"
+                  >
+                    <AvatarImage
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                    />
+                    <AvatarFallback>{testimonial.avatar}</AvatarFallback>
+                  </Avatar>
                 ))}
               </div>
               <div className="flex flex-col text-xs">
@@ -316,7 +321,7 @@ export default function LandingPage() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-15 bg-muted/30">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl font-bold mb-4 flex items-center justify-center gap-3">
