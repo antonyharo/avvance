@@ -16,7 +16,7 @@ import {
   FileBadge,
 } from "lucide-react";
 
-export default function MatchAnalysisDemo({ loading }) {
+export default function CandidateJobMatchSkeleton({ loading }) {
   if (loading) {
     return (
       <Card className="container mx-auto p-8 border-dashed w-full max-w-5xl bg-card/50 gap-1">

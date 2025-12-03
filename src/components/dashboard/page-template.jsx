@@ -1,8 +1,22 @@
-import ProfileGenerator from "../skeletons/profile-generator";
 import modules from "@/config/modules.json";
-import ReviewerSkeleton from "../skeletons/reviewer";
-import LinkedinGeneratorSkeleton from "../skeletons/linkedin-generator";
+
+import AnalyzerSkeleton from "../skeletons/analyzer";
 import CandidateJobMatchSkeleton from "../skeletons/candidate-job-match";
+import InterviewSimulatorSkeleton from "../skeletons/interview-simulator";
+import JobsSkeleton from "../skeletons/jobs";
+import LinkedinGeneratorSkeleton from "../skeletons/linkedin-generator";
+import ProfileGeneratorSkeleton from "../skeletons/profile-generator";
+import ReviewerSkeleton from "../skeletons/reviewer";
+
+const skeletonMap = {
+  "analyzer": AnalyzerSkeleton,
+  "candidate-job-match": CandidateJobMatchSkeleton,
+  "interview-simulator": InterviewSimulatorSkeleton,
+  "jobs": JobsSkeleton,
+  "linkedin-generator": LinkedinGeneratorSkeleton,
+  "profile-generator": ProfileGeneratorSkeleton,
+  "reviewer": ReviewerSkeleton,
+};
 
 export default function PageTemplate({
   moduleName,
@@ -10,8 +24,11 @@ export default function PageTemplate({
   title,
   children,
   error,
+  loading,
 }) {
   const moduleInfo = modules?.[moduleName];
+
+  const Skeleton = skeletonMap[moduleName];
 
   return (
     <div className="space-y-8">
@@ -32,7 +49,7 @@ export default function PageTemplate({
 
       {children}
 
-      <CandidateJobMatchSkeleton />
+      {Skeleton && <Skeleton />}
     </div>
   );
 }

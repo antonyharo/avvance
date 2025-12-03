@@ -1,358 +1,429 @@
-import { Card } from "../ui/card";
+import { Card } from "@/components/ui/card";
 import Loader from "../ui/loader";
-import { Separator } from "../ui/separator";
-import { Skeleton } from "../ui/skeleton";
+import { Separator } from "@/components/ui/separator";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Progress } from "@/components/ui/progress"; // Supondo que exista, ou simulamos com div
+import { Badge } from "@/components/ui/badge";
 import {
-  Sparkles,
-  AlertTriangle,
-  Search,
-  CheckCircle,
+  GitPullRequest,
+  AlertOctagon,
+  CheckCircle2,
   TrendingUp,
-  Star,
-  Code,
+  Microscope,
+  CalendarClock,
+  LayoutTemplate,
+  FileJson,
+  ArrowRight,
+  Maximize2,
+  Search,
   Target,
-  Zap,
-  Bug,
-  Terminal,
-  Cpu,
 } from "lucide-react";
 
 export default function ReviewerSkeleton({ loading }) {
-  // Helper para renderizar estrelas
-  const renderStars = (count) => {
-    return Array(5)
-      .fill(0)
-      .map((_, i) => (
-        <Star
-          key={i}
-          className={`w-4 h-4 ${
-            i < count
-              ? "text-yellow-500 fill-yellow-500"
-              : "text-muted-foreground/20"
-          }`}
-        />
-      ));
-  };
-
   if (loading) {
     return (
-      <Card className="container mx-auto p-8 border-dashed w-full max-w-5xl bg-card/50 gap-1">
-        {/* HEADER LOADING */}
-        <header className="space-y-5">
-          <div className="space-y-3 animate-pulse">
-            <div className="flex items-center gap-3">
-              <Loader />
+      <Card className="container mx-auto p-8 border-dashed w-full max-w-6xl bg-card/50 gap-1">
+        <header className="space-y-6">
+          <div className="flex items-center gap-4 animate-pulse">
+            <Loader />
+            <div className="space-y-2">
               <h1 className="text-3xl font-bold text-muted-foreground/60">
-                Rodando Testes Unitários...{" "}
-                <span className="text-muted-foreground/30 font-normal">
-                  - Análise de Carreira
-                </span>
+                Executando Auditoria Profunda...
               </h1>
+              <p className="text-sm text-muted-foreground/50">
+                Analisando semântica, consistência temporal e métricas de
+                impacto (OARR)...
+              </p>
             </div>
           </div>
           <Separator />
-          <nav className="flex gap-6 text-sm font-medium text-muted-foreground/50 animate-pulse">
-            <Skeleton className="h-4 w-24" />
-            <Skeleton className="h-4 w-24" />
-            <Skeleton className="h-4 w-24" />
-          </nav>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+            <Skeleton className="h-96 w-full rounded-xl" />
+            <div className="space-y-4">
+              <Skeleton className="h-28 w-full rounded-xl" />
+              <Skeleton className="h-28 w-full rounded-xl" />
+              <Skeleton className="h-28 w-full rounded-xl" />
+            </div>
+          </div>
         </header>
-
-        <main className="space-y-10 mt-8">
-          {/* SCORES LOADING */}
-          <section className="grid grid-cols-1 md:grid-cols-3 gap-4 animate-pulse">
-            {[1, 2, 3].map((_, i) => (
-              <div
-                key={i}
-                className="border rounded-lg p-6 space-y-3 bg-muted/5 flex flex-col items-center justify-center"
-              >
-                <Skeleton className="h-4 w-32 mb-2" />
-                <Skeleton className="h-12 w-20 rounded-md" />
-              </div>
-            ))}
-          </section>
-
-          {/* MATRIZ LOADING */}
-          <section className="space-y-4">
-            <div className="flex items-center gap-2 text-muted-foreground/70 animate-pulse">
-              <Target className="w-6 h-6" />
-              <h2 className="text-xl font-semibold">Compilando Matriz 5D...</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-pulse">
-              {[1, 2, 3, 4].map((_, i) => (
-                <div
-                  key={i}
-                  className="border rounded-lg p-4 space-y-3 bg-muted/5"
-                >
-                  <div className="flex justify-between">
-                    <Skeleton className="h-4 w-24" />
-                    <Skeleton className="h-4 w-20" />
-                  </div>
-                  <Skeleton className="h-10 w-full" />
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* OARR LOADING */}
-          <section className="space-y-4">
-            <Skeleton className="h-40 w-full rounded-lg" />
-          </section>
-        </main>
       </Card>
     );
   }
 
   return (
-    <Card className="container mx-auto p-8 border-dashed w-full max-w-5xl bg-card/50 gap-1">
-      {/* HEADER */}
-      <header className="space-y-5">
-        <h2 className="text-primary/80">Build Concluído com Sucesso:</h2>
-        <div className="space-y-3">
-          <div className="flex items-center gap-3">
-            <h1 className="text-3xl font-bold text-muted-foreground/60">
-              Roberto "Beto" Souza{" "}
-              <span className="text-muted-foreground/30 font-normal">
-                - Code Review de Currículo
-              </span>
+    <Card className="w-full max-w-7xl mx-auto bg-card/50 border-dashed p-6 md:p-10">
+      {/* HEADER: VISÃO MACRO */}
+      <header className="mb-10">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2 text-primary font-bold text-xs tracking-widest uppercase bg-primary/10 w-fit px-2 py-1 rounded">
+              <Microscope className="w-4 h-4" /> Auditoria de Currículo v3.5
+            </div>
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+              Relatório de Conformidade & Impacto
             </h1>
+            <p className="text-muted-foreground text-base max-w-2xl">
+              Análise detalhada baseada em 5 dimensões críticas. Identificamos{" "}
+              <span className="text-red-500 font-bold">
+                2 Bloqueios Críticos
+              </span>{" "}
+              e{" "}
+              <span className="text-green-600 font-bold">
+                3 Diferenciais de Ouro
+              </span>
+              .
+            </p>
+          </div>
+
+          <div className="flex flex-col items-end gap-2 bg-background border p-4 rounded-xl shadow-sm">
+            <span className="text-xs font-bold uppercase text-muted-foreground">
+              Nota Geral (ATS Score)
+            </span>
+            <div className="flex items-baseline gap-1">
+              <span className="text-4xl font-black text-yellow-500">75</span>
+              <span className="text-lg text-muted-foreground/60 font-medium">
+                /100
+              </span>
+            </div>
+            <div className="w-32 h-2 bg-muted rounded-full overflow-hidden mt-1">
+              <div className="h-full bg-yellow-500 w-[75%]" />
+            </div>
           </div>
         </div>
-
-        <Separator />
-
-        <nav className="flex gap-6 text-sm font-medium text-muted-foreground/50">
-          <div className="flex items-center gap-2 hover:text-primary cursor-pointer transition-colors">
-            <TrendingUp className="w-4 h-4" /> <span>KPIs</span>
-          </div>
-          <div className="flex items-center gap-2 hover:text-primary cursor-pointer transition-colors">
-            <Target className="w-4 h-4" /> <span>Matriz 5D</span>
-          </div>
-          <div className="flex items-center gap-2 hover:text-primary cursor-pointer transition-colors">
-            <Terminal className="w-4 h-4" /> <span>Refatoração</span>
-          </div>
-        </nav>
       </header>
 
-      <main className="space-y-10 mt-8">
-        {/* SECTION 1: SCOREBOARD */}
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {[
-            {
-              label: "Aderência DevOps",
-              score: "88",
-              color: "text-green-500",
-              desc: "Stack AWS + Terraform sólida",
-              icon: <Cpu className="w-4 h-4 mb-1 text-muted-foreground/50" />,
-            },
-            {
-              label: "Senioridade Percebida",
-              score: "75",
-              color: "text-blue-500",
-              desc: "Pleno consolidado, mirando Sênior",
-              icon: (
-                <TrendingUp className="w-4 h-4 mb-1 text-muted-foreground/50" />
-              ),
-            },
-            {
-              label: "Fator 'Recrutável'",
-              score: "65",
-              color: "text-orange-500",
-              desc: "Muitas siglas, pouco contexto de negócio",
-              icon: (
-                <Search className="w-4 h-4 mb-1 text-muted-foreground/50" />
-              ),
-            },
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="border rounded-lg p-6 bg-card flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md transition-all hover:bg-muted/5"
-            >
-              <div className="flex items-center gap-2 mb-2">
-                {item.icon}
-                <span className="text-xs font-bold text-muted-foreground/70 uppercase tracking-wider">
-                  {item.label}
-                </span>
-              </div>
-              <div className={`text-4xl font-black ${item.color} mb-2`}>
-                {item.score}
-                <span className="text-lg text-muted-foreground/40 font-normal">
-                  /100
-                </span>
-              </div>
-              <p className="text-xs text-muted-foreground/60">{item.desc}</p>
-            </div>
-          ))}
-        </section>
-
-        {/* SECTION 2: 5D MATRIX */}
-        <section className="space-y-6">
-          <div className="flex items-center gap-2 text-muted-foreground/70">
-            <Target className="w-6 h-6" />
-            <h2 className="text-xl font-semibold">
-              Análise Profunda (Matriz 5D)
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              {
-                dim: "Dados Estratégicos",
-                stars: 5,
-                insight:
-                  "Links perfeitos. GitHub com 'commits verdes' o ano todo. Passou no teste de sanidade.",
-              },
-              {
-                dim: "Trajetória",
-                stars: 3,
-                insight:
-                  "A migração de 'Java Legado' para 'Cloud Native' está confusa. Parece que você dormiu Dev e acordou DevOps.",
-              },
-              {
-                dim: "Resultados (Impacto)",
-                stars: 2,
-                insight:
-                  "Diz que 'configurou Kubernetes', mas não diz se economizou custo ou se derrubou a produção.",
-              },
-              {
-                dim: "Competências",
-                stars: 4,
-                insight:
-                  "Hard skills afiadas (Docker, K8s, CI/CD). Soft skills (comunicação) estão rodando em localhost ainda.",
-              },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="border rounded-lg p-4 space-y-2 bg-muted/5"
-              >
-                <div className="flex justify-between items-center mb-1">
-                  <span className="font-bold text-sm text-foreground/80">
-                    {item.dim}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        {/* COLUNA ESQUERDA: DETALHAMENTO TÉCNICO (8 colunas) */}
+        <div className="lg:col-span-8 space-y-10">
+          {/* 1. ANÁLISE ESTRATÉGICA (TEXTO DENSO) */}
+          <section className="space-y-4">
+            <h3 className="flex items-center gap-2 font-bold text-xl text-foreground">
+              <Target className="w-5 h-5 text-primary" /> Diagnóstico
+              Estratégico
+            </h3>
+            <div className="bg-background border rounded-xl p-6 space-y-4 shadow-sm">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <span className="text-xs font-bold text-muted-foreground uppercase flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3 text-green-500" /> Pontos
+                    Fortes
                   </span>
-                  <div className="flex">{renderStars(item.stars)}</div>
+                  <p className="text-sm text-foreground/80 leading-relaxed">
+                    Seu stack (Python, Next.js, IA) é extremamente atual e
+                    vendável. A menção à mentoria em Hackathon e a criação de
+                    produtos internos (Script XML-RPC) prova que você entrega
+                    valor real, não apenas código.
+                  </p>
                 </div>
-                <p className="text-sm text-muted-foreground/60 leading-relaxed">
-                  {item.insight}
+                <div className="space-y-2">
+                  <span className="text-xs font-bold text-muted-foreground uppercase flex items-center gap-1">
+                    <AlertOctagon className="w-3 h-3 text-red-500" /> Ponto de
+                    Atenção
+                  </span>
+                  <p className="text-sm text-foreground/80 leading-relaxed">
+                    A apresentação da experiência é confusa. Datas futuras
+                    (2025) misturadas com realizações passadas geram
+                    desconfiança. Além disso, falta quantificação numérica nos
+                    resultados.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 2. MATRIZ 5D DETALHADA */}
+          <section className="space-y-4">
+            <h3 className="flex items-center gap-2 font-bold text-xl text-foreground">
+              <LayoutTemplate className="w-5 h-5 text-primary" /> Matriz de
+              Avaliação 5D
+            </h3>
+            <div className="grid gap-4">
+              {/* Item da Matriz */}
+              <div className="bg-background border rounded-lg p-4 flex flex-col md:flex-row gap-4 items-start">
+                <div className="md:w-1/4">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="font-bold text-sm">Trajetória</span>
+                    <Badge
+                      variant="outline"
+                      className="text-yellow-600 bg-yellow-50 border-yellow-200"
+                    >
+                      3/5
+                    </Badge>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Coerência cronológica
+                  </p>
+                </div>
+                <div className="md:w-3/4 border-l pl-4 border-dashed">
+                  <p className="text-sm text-foreground/90">
+                    <span className="font-bold text-red-500">
+                      Bug Temporal:
+                    </span>{" "}
+                    Você listou o estágio terminando em Julho/2025, mas descreve
+                    feitos como se já tivessem ocorrido. Isso é ambíguo. Se é um
+                    contrato futuro, deixe claro. Se é atual, use "Presente".
+                  </p>
+                </div>
+              </div>
+
+              {/* Item da Matriz */}
+              <div className="bg-background border rounded-lg p-4 flex flex-col md:flex-row gap-4 items-start">
+                <div className="md:w-1/4">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="font-bold text-sm">Resultados</span>
+                    <Badge
+                      variant="outline"
+                      className="text-red-600 bg-red-50 border-red-200"
+                    >
+                      2/5
+                    </Badge>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Impacto quantitativo
+                  </p>
+                </div>
+                <div className="md:w-3/4 border-l pl-4 border-dashed">
+                  <p className="text-sm text-foreground/90">
+                    <span className="font-bold text-red-500">
+                      Falta de Dados:
+                    </span>{" "}
+                    Você diz "agregou valor", mas não diz quanto. O script
+                    otimizou em 10% ou 90%? Recrutadores amam números. Sem eles,
+                    o impacto fica subjetivo.
+                  </p>
+                </div>
+              </div>
+
+              {/* Item da Matriz */}
+              <div className="bg-background border rounded-lg p-4 flex flex-col md:flex-row gap-4 items-start">
+                <div className="md:w-1/4">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="font-bold text-sm">Competências</span>
+                    <Badge
+                      variant="outline"
+                      className="text-blue-600 bg-blue-50 border-blue-200"
+                    >
+                      3/5
+                    </Badge>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Organização de Skills
+                  </p>
+                </div>
+                <div className="md:w-3/4 border-l pl-4 border-dashed">
+                  <p className="text-sm text-foreground/90">
+                    <span className="font-bold text-blue-500">
+                      Mistura de Conceitos:
+                    </span>{" "}
+                    A seção "Conhecimentos" está narrativa demais. Soft skills
+                    estão perdidas no meio de Hard skills. Separe em listas
+                    limpas para facilitar a leitura do robô (ATS).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 3. LABORATÓRIO DE REFATORAÇÃO (OARR) */}
+          <section className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="flex items-center gap-2 font-bold text-xl text-foreground">
+                <GitPullRequest className="w-5 h-5 text-primary" /> Laboratório
+                de Refatoração (OARR)
+              </h3>
+              <Badge variant="secondary" className="text-xs">
+                Exemplo Real do seu CV
+              </Badge>
+            </div>
+
+            <div className="bg-muted/20 border rounded-xl overflow-hidden">
+              <div className="p-4 border-b bg-muted/40">
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                  Objetivo: Transformar descrição de tarefa em descrição de
+                  impacto
                 </p>
               </div>
-            ))}
-          </div>
-        </section>
 
-        {/* SECTION 3: QUICK FIXES (HOTFIXES) */}
-        <section className="space-y-6">
-          <div className="flex items-center gap-2 text-muted-foreground/70">
-            <Zap className="w-6 h-6" />
-            <h2 className="text-xl font-semibold">
-              Hotfixes Sugeridos (Prioridade Alta)
-            </h2>
-          </div>
-
-          <div className="space-y-4">
-            {/* Bug Report */}
-            <div className="border border-l-4 border-l-red-400 rounded-r-lg p-4 bg-red-50/5 hover:bg-red-50/10 transition-colors">
-              <div className="flex gap-3 items-start">
-                <Bug className="w-5 h-5 text-red-400 mt-1 shrink-0" />
-                <div className="space-y-1">
-                  <h4 className="font-semibold text-sm">
-                    Bug Crítico: "Inglês Técnico"
-                  </h4>
-                  <p className="text-sm text-muted-foreground/60">
-                    Você colocou "Inglês Técnico" mas listou experiência
-                    internacional. Isso é{" "}
-                    <span className="italic">undefined behavior</span>. Se
-                    conversou com gringo, é "Avançado/Fluente". Valorize seu
-                    *buffer*!
+              <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x border-b">
+                {/* ANTES */}
+                <div className="p-6 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-red-500 bg-red-100 px-2 py-1 rounded">
+                      ORIGINAL
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      Passivo
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-foreground italic leading-relaxed">
+                    "Criei um script de exportação de contatos via XML-RPC em
+                    Python altamente otimizado, permitindo o upload de arquivos
+                    .csv para uma base de dados Odoo."
                   </p>
+                  <ul className="text-xs text-red-500 space-y-1 list-disc list-inside">
+                    <li>Foca no "o que" fez, não no resultado.</li>
+                    <li>"Altamente otimizado" é vago (opinião).</li>
+                  </ul>
                 </div>
-              </div>
-            </div>
 
-            {/* Feature Request */}
-            <div className="border border-l-4 border-l-blue-400 rounded-r-lg p-4 bg-blue-50/5 hover:bg-blue-50/10 transition-colors">
-              <div className="flex gap-3 items-start">
-                <Sparkles className="w-5 h-5 text-blue-400 mt-1 shrink-0" />
-                <div className="space-y-1">
-                  <h4 className="font-semibold text-sm">
-                    Feature Request: Quantificar o Caos
-                  </h4>
-                  <p className="text-sm text-muted-foreground/60">
-                    Troque "Manutenção de servidores" por "Garantia de 99.9% de
-                    Uptime em Black Friday". O recrutador gosta de números, não
-                    de promessas.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 4: OARR (REFATORAÇÃO) */}
-        <section className="space-y-6">
-          <div className="flex items-center gap-2 text-muted-foreground/70">
-            <Code className="w-6 h-6" />
-            <h2 className="text-xl font-semibold">
-              Refatoração de Experiência (Método OARR)
-            </h2>
-          </div>
-
-          <Skeleton
-            noPulse
-            className="border rounded-lg p-6 space-y-6 bg-muted/10"
-          >
-            {/* Legacy Code Block */}
-            <div className="space-y-2 group">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="bg-red-500/10 text-red-500 text-[10px] font-bold px-2 py-1 rounded uppercase flex items-center gap-1">
-                  <AlertTriangle className="w-3 h-3" /> Legacy Code
-                </span>
-              </div>
-              <p className="text-sm text-muted-foreground/50 italic border-l-2 border-red-200 pl-3">
-                "Responsável por criar pipelines Jenkins e gerenciar containers
-                Docker. Também ajudava a corrigir bugs em Java quando o time
-                estava atolado."
-              </p>
-            </div>
-
-            <Separator className="bg-muted-foreground/20" />
-
-            {/* Clean Code Block */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <span className="bg-green-500/10 text-green-600 text-[10px] font-bold px-2 py-1 rounded uppercase flex items-center gap-1">
-                  <CheckCircle className="w-3 h-3" /> Clean Code (Otimizado)
-                </span>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <span className="text-xs font-bold text-muted-foreground uppercase flex items-center gap-1">
-                    <Terminal className="w-3 h-3" /> Oportunidade & Ação
-                  </span>
-                  <p className="text-sm text-muted-foreground/70">
-                    Liderei a modernização da infraestrutura legacy. Migrei
-                    monolitos Java para microsserviços em Docker, orquestrados
-                    via pipelines Jenkins automatizados.
-                  </p>
-                </div>
-                <div className="space-y-1">
-                  <span className="text-xs font-bold text-primary uppercase flex items-center gap-1">
-                    <Zap className="w-3 h-3" /> Resultado & Relevância
-                  </span>
-                  <p className="text-sm text-muted-foreground/70">
-                    Redução de{" "}
-                    <span className="font-semibold text-primary/80">
-                      40% no tempo de deploy
+                {/* DEPOIS */}
+                <div className="p-6 space-y-4 bg-green-50/10">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-green-600 bg-green-100 px-2 py-1 rounded">
+                      REFATORADO
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      Orientado a Ação
+                    </span>
+                  </div>
+                  <p className="text-sm text-foreground font-medium leading-relaxed">
+                    "Desenvolvi solução de automação em Python/XML-RPC que{" "}
+                    <span className="bg-green-100 text-green-800 px-1 rounded">
+                      reduziu em 70%
                     </span>{" "}
-                    e eliminação do clássico erro "funciona na minha máquina",
-                    aumentando a produtividade do time em 25%.
+                    o tempo de processamento de dados. A ferramenta eliminou
+                    erros manuais e foi{" "}
+                    <span className="bg-green-100 text-green-800 px-1 rounded">
+                      adotada oficialmente
+                    </span>{" "}
+                    como produto da empresa."
                   </p>
+                  <ul className="text-xs text-green-600 space-y-1 list-disc list-inside">
+                    <li>Usa métricas (70% de redução).</li>
+                    <li>Prova valor social (adotada como produto).</li>
+                  </ul>
                 </div>
               </div>
+              <div className="p-3 bg-muted/40 text-center">
+                <p className="text-xs text-muted-foreground">
+                  <span className="font-bold">Fórmula OARR:</span> Oportunidade
+                  → Ação → Resultado → Relevância
+                </p>
+              </div>
             </div>
-          </Skeleton>
-        </section>
-      </main>
+          </section>
+        </div>
+
+        {/* COLUNA DIREITA: PLANO DE AÇÃO (4 colunas) */}
+        <div className="lg:col-span-4 space-y-8">
+          {/* QUICK WINS */}
+          <div className="space-y-4">
+            <h3 className="font-bold text-lg flex items-center gap-2">
+              <CalendarClock className="w-5 h-5 text-yellow-500" /> Correções
+              Imediatas
+            </h3>
+            <div className="space-y-3">
+              <Card className="p-4 border-l-4 border-l-red-500 shadow-sm bg-red-50/10">
+                <h4 className="font-bold text-sm text-foreground mb-1">
+                  Ajustar Datas do Estágio
+                </h4>
+                <p className="text-xs text-muted-foreground">
+                  Mude "Julho/2025" para "Atual" ou explique se é um contrato
+                  futuro. Ambiguidade mata processos.
+                </p>
+              </Card>
+              <Card className="p-4 border-l-4 border-l-orange-500 shadow-sm bg-orange-50/10">
+                <h4 className="font-bold text-sm text-foreground mb-1">
+                  Limpar Seção "Conhecimentos"
+                </h4>
+                <p className="text-xs text-muted-foreground">
+                  Delete o texto corrido. Transforme em bullet points
+                  categorizados (Linguagens, Frameworks, Tools).
+                </p>
+              </Card>
+              <Card className="p-4 border-l-4 border-l-blue-500 shadow-sm bg-blue-50/10">
+                <h4 className="font-bold text-sm text-foreground mb-1">
+                  Reescrever o Resumo
+                </h4>
+                <p className="text-xs text-muted-foreground">
+                  Evite "1 ano de experiência" se for estágio. Use "Vivência
+                  prática em projetos com..."
+                </p>
+              </Card>
+            </div>
+          </div>
+
+          {/* ESTRATÉGIA LONGO PRAZO */}
+          <div className="space-y-4">
+            <h3 className="font-bold text-lg flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-blue-500" /> Plano de Evolução
+            </h3>
+            <div className="border rounded-xl p-5 space-y-6 bg-background">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-sm font-medium">
+                  <span>GitHub Portfolio</span>
+                  <span className="text-xs text-muted-foreground">
+                    Prioridade Alta
+                  </span>
+                </div>
+                <Progress value={30} className="h-2" />
+                <p className="text-xs text-muted-foreground pt-1">
+                  Seus projetos da Diggi Systems são proprietários. Você precisa
+                  de 2-3 projetos open-source para provar seu código
+                  publicamente.
+                </p>
+              </div>
+
+              <Separator />
+
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-sm font-medium">
+                  <span>Certificações Cloud</span>
+                  <span className="text-xs text-muted-foreground">
+                    Médio Prazo
+                  </span>
+                </div>
+                <Progress value={10} className="h-2" />
+                <p className="text-xs text-muted-foreground pt-1">
+                  Como você mexe com SaaS e Next.js, uma certificação AWS Cloud
+                  Practitioner seria um diferencial enorme.
+                </p>
+              </div>
+
+              <Separator />
+
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-sm font-medium">
+                  <span>Inglês Técnico</span>
+                  <span className="text-xs text-muted-foreground">
+                    Contínuo
+                  </span>
+                </div>
+                <Progress value={60} className="h-2" />
+                <p className="text-xs text-muted-foreground pt-1">
+                  Saia do intermediário. A melhor documentação de Next.js e IA
+                  está em inglês.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* INSIGHT DE NICHO */}
+          <div className="bg-gradient-to-br from-primary/10 to-purple-500/10 border border-primary/20 rounded-xl p-5">
+            <h4 className="font-bold text-sm text-foreground flex items-center gap-2 mb-2">
+              <Search className="w-4 h-4" /> Posicionamento Ideal
+            </h4>
+            <p className="text-xs text-foreground/80 leading-relaxed">
+              Com base na sua análise, pare de aplicar para vagas genéricas.
+              Foque em:
+            </p>
+            <ul className="mt-3 space-y-2">
+              <li className="text-xs font-medium flex items-center gap-2">
+                <ArrowRight className="w-3 h-3 text-primary" /> Startups de SaaS
+                B2B
+              </li>
+              <li className="text-xs font-medium flex items-center gap-2">
+                <ArrowRight className="w-3 h-3 text-primary" /> Consultorias de
+                ERP (Odoo)
+              </li>
+              <li className="text-xs font-medium flex items-center gap-2">
+                <ArrowRight className="w-3 h-3 text-primary" /> Vagas de
+                "Product Engineer"
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </Card>
   );
 }
