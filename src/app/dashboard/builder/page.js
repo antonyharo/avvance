@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { FileText } from "lucide-react";
 
-import { useCvForm } from "@/hooks/use-form";
-import CvBuilderForm from "@/components/builder-form";
+import { useCvForm } from "@/hooks/use-cv-form";
+import CvBuilderForm from "@/components/cv-builder-form";
 import PageTemplate from "@/components/dashboard/page-template";
 import AiOutput from "@/components/dashboard/ai-output";
 
