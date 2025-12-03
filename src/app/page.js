@@ -46,7 +46,7 @@ const testimonials = [
     avatar: "LF",
     image: "https://i.pravatar.cc/150?u=lucas", // Placeholder
     content:
-      "Eu mandava 50 currículos por semana e não tinha resposta. O Avvance me mostrou que eu estava sendo filtrado pelos robôs. Ajustei as keywords e em 2 semanas consegui minha entrevista.",
+      "Eu mandava 50 currículos por semana e não tinha resposta. A Avvance me mostrou que eu estava sendo filtrado pelos robôs. Ajustei as keywords e em 2 semanas consegui minha entrevista.",
     highlight: "Contratado em 14 dias",
   },
   {
@@ -86,7 +86,7 @@ const testimonials = [
     avatar: "ES",
     image: "https://i.pravatar.cc/150?u=eduardo",
     content:
-      "Eu não sabia vender meu próprio peixe. O Avvance transformou minhas experiências genéricas em conquistas quantificáveis. Valeu cada centavo.",
+      "Eu não sabia vender meu próprio peixe. A Avvance transformou minhas experiências genéricas em conquistas quantificáveis. Valeu cada centavo.",
     highlight: "Mudança de carreira",
   },
   {
@@ -96,7 +96,7 @@ const testimonials = [
     avatar: "FL",
     image: "https://i.pravatar.cc/150?u=fernanda",
     content:
-      "Como recrutadora, digo: dá para ver a diferença de quem usa o Avvance. Os currículos chegam limpos, diretos e fáceis de ler. Facilita meu trabalho e o do candidato.",
+      "Como recrutadora, digo: dá para ver a diferença de quem usa A Avvance. Os currículos chegam limpos, diretos e fáceis de ler. Facilita meu trabalho e o do candidato.",
     highlight: "Aprovado por RHs",
   },
 ];
@@ -134,7 +134,7 @@ export default function LandingPage() {
                   </Button>
                 </SignInButton>
                 <SignUpButton>
-                  <Button className="bg-purple-600 hover:bg-purple-700 text-white shadow-lg shadow-purple-500/20">
+                  <Button className="bg-purple-500 hover:bg-purple-700 text-white shadow-lg shadow-purple-500/20">
                     Começar Agora <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </SignUpButton>
@@ -188,7 +188,7 @@ export default function LandingPage() {
               <SignedOut>
                 <Button
                   size="lg"
-                  className="h-12 px-8 text-base bg-purple-600 hover:bg-purple-700 shadow-xl shadow-purple-500/20"
+                  className="h-12 px-8 text-base bg-purple-500 hover:bg-purple-600 shadow-xl shadow-purple-500/20"
                   onClick={openSignUp}
                 >
                   Otimizar meu Currículo Grátis
@@ -289,7 +289,7 @@ export default function LandingPage() {
 
                   <SignedOut>
                     <Button
-                      className="w-full h-11 bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 transition-opacity"
+                      className="w-full h-11 bg-gradient-to-r from-purple-500 to-pink-600 hover:opacity-90 transition-opacity"
                       onClick={openSignUp}
                     >
                       Começar Análise{" "}
@@ -331,7 +331,7 @@ export default function LandingPage() {
               Tudo o que você precisa para ser contratado
             </h2>
             <p className="text-muted-foreground text-lg">
-              Esqueça as planilhas e a ansiedade. O Avvance centraliza sua busca
+              Esqueça as planilhas e a ansiedade. A Avvance centraliza sua busca
               e te dá as ferramentas de IA que antes só os recrutadores tinham.
             </p>
           </div>
@@ -373,10 +373,10 @@ export default function LandingPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full p-6 flex flex-col justify-between hover:shadow-lg hover:border-purple-500/30 transition-all duration-300 bg-card/50 backdrop-blur-sm group">
+                <Card className="h-full p-6 flex flex-col justify-between hover:shadow-lg hover:border-purple-500 transition-all duration-300 hover:bg-purple-500/10 backdrop-blur-sm group">
                   <div>
                     <div className="flex justify-between items-start mb-4">
-                      <Quote className="text-purple-500/20 w-8 h-8 group-hover:text-purple-500/40 transition-colors" />
+                      <Quote className="text-purple-500/40 w-8 h-8 group-hover:text-purple-500 transition-colors" />
                       <div className="flex gap-1">
                         {[1, 2, 3, 4, 5].map((star) => (
                           <Star
@@ -445,7 +445,7 @@ export default function LandingPage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-24 container mx-auto px-6">
+      <section className="pb-30 container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold">
             Invista na sua carreira (por menos de uma pizza)
