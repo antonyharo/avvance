@@ -34,6 +34,7 @@ export default function Page() {
       }
 
       const result = await response.json();
+      console.log(result)
       setOutput(result.output || "Análise concluída com sucesso!");
     } catch (error) {
       setError("Erro ao processar a requisição: " + error.message);

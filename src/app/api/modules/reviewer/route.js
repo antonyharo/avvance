@@ -69,7 +69,7 @@ export async function POST(req) {
       );
     }
 
-    return NextResponse.json({ outpu: response.text }, { status: 200 });
+    return NextResponse.json({ output: response.text }, { status: 200 });
   } catch (error) {
     console.error("Erro ao processar o arquivo:", error);
     return NextResponse.json(

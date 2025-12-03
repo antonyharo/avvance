@@ -1,8 +1,8 @@
 "use client";
 
+import { modules } from "@/config/modules";
 import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
-import { modules } from "@/config/modules";
 import ModuleCard from "@/components/module-card";
 import { Mail } from "lucide-react";
 import { UserUsageChart } from "@/components/dashboard/user-usage-chart";
