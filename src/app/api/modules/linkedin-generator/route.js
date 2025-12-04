@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
-import { linkedinGeneratorPrompt } from "@/config/prompts";
+import { linkedinGeneratorPrompt } from "@/config/prompts/linkedinGeneratorPrompt";
 import { getServiceRoleClient } from "@/lib/supabase/server";
 import { auth } from "@clerk/nextjs/server";
 

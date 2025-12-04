@@ -1,0 +1,96 @@
+Analise o currículo abaixo e crie um Dossiê Profissional (Raio-X).
+Retorne APENAS um JSON válido seguindo estritamente esta estrutura.
+
+ESTRUTURA JSON DESEJADA:
+{
+  "header": {
+    "title": "Raio-X do Candidato", // Pode variar levemente se quiser, mas "Raio-X" é bom
+    "subtitle": "Visão 360º: Competências, Potencial e Valor de Mercado.",
+    "badgeText": "Score: Top X% do Mercado", // Ex: "Top 5% do Mercado", "Top 20% (Júnior)"
+    "badgeColor": "primary" // Apenas informativo, o front decide a cor real
+  },
+  "identity": {
+    "executiveSummary": "Um parágrafo curto (max 40 palavras) que resume quem é o profissional. Ex: 'Profissional híbrido e estratégico...'. Use tags HTML <strong> ou <span> para destaque se necessário, mas texto puro é mais seguro.",
+    "valuation": {
+      "valueRange": "R$ Xk - Yk", // Ex: "R$ 12k - 18k"
+      "level": "Sênior", // Ex: Júnior, Pleno, Sênior, Especialista
+      "negotiation": "Alta/Média/Baixa", // Poder de negociação
+      "demand": "Alta/Média/Baixa" // Demanda de mercado
+    },
+    "softSkills": [
+      // Gere exatamente 3 soft skills com porcentagem
+      { "name": "Nome da Skill (ex: Liderança)", "percentage": 92 },
+      { "name": "Nome da Skill (ex: Analítico)", "percentage": 88 },
+      { "name": "Nome da Skill (ex: Resiliência)", "percentage": 95 }
+    ]
+  },
+  "technical": {
+    "mainSkills": ["Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5"], // Max 5 skills principais
+    "differentials": ["Dif 1", "Dif 2", "Dif 3", "Dif 4"] // Max 4 diferenciais (inglês, certs)
+  },
+  "trackRecord": [
+    // Gere 2 conquistas de impacto
+    {
+      "iconType": "trending", // 'trending' ou 'lightbulb' (apenas para referência)
+      "title": "Título da Conquista (ex: Aumento de Eficiência)",
+      "description": "Descrição com números. Ex: Reduziu em 30% o tempo..."
+    },
+    {
+      "iconType": "lightbulb",
+      "title": "Título da Conquista (ex: Liderança em Projetos)",
+      "description": "Descrição com impacto. Ex: Entregou projeto com NPS 95..."
+    }
+  ],
+  "recruiterInsights": {
+    "culturalFit": "Descrição curta do ambiente ideal. Ex: Scale-ups ou Transformação Digital.",
+    "attentionPoint": "Um ponto de atenção comportamental ou técnico. Ex: Evitar microgerenciamento."
+  }
+}
+
+
+
+
+
+import { GoogleGenAI } from "@google/genai";
+import { z } from "zod";
+import { zodToJsonSchema } from "zod-to-json-schema";
+
+const ingredientSchema = z.object({
+  name: z.string().describe("Name of the ingredient."),
+  quantity: z.string().describe("Quantity of the ingredient, including units."),
+});
+
+const recipeSchema = z.object({
+  recipe_name: z.string().describe("The name of the recipe."),
+  prep_time_minutes: z.number().optional().describe("Optional time in minutes to prepare the recipe."),
+  ingredients: z.array(ingredientSchema),
+  instructions: z.array(z.string()),
+});
+
+const ai = new GoogleGenAI({});
+
+const prompt = `
+Please extract the recipe from the following text.
+The user wants to make delicious chocolate chip cookies.
+They need 2 and 1/4 cups of all-purpose flour, 1 teaspoon of baking soda,
+1 teaspoon of salt, 1 cup of unsalted butter (softened), 3/4 cup of granulated sugar,
+3/4 cup of packed brown sugar, 1 teaspoon of vanilla extract, and 2 large eggs.
+For the best part, they'll need 2 cups of semisweet chocolate chips.
+First, preheat the oven to 375°F (190°C). Then, in a small bowl, whisk together the flour,
+baking soda, and salt. In a large bowl, cream together the butter, granulated sugar, and brown sugar
+until light and fluffy. Beat in the vanilla and eggs, one at a time. Gradually beat in the dry
+ingredients until just combined. Finally, stir in the chocolate chips. Drop by rounded tablespoons
+onto ungreased baking sheets and bake for 9 to 11 minutes.
+`;
+
+const response = await ai.models.generateContent({
+  model: "gemini-2.5-flash",
+  contents: prompt,
+  config: {
+    responseMimeType: "application/json",
+    responseJsonSchema: zodToJsonSchema(recipeSchema),
+  },
+});
+
+const recipe = recipeSchema.parse(JSON.parse(response.text));
+console.log(recipe);

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
 import { getServiceRoleClient } from "@/lib/supabase/server";
 import { auth } from "@clerk/nextjs/server";
-import { candidateJobMatchPrompt } from "@/config/prompts";
+import { candidateJobMatchPrompt } from "@/config/prompts/candidateJobMatchPrompt";
 
 export async function POST(req) {
   try {

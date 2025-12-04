@@ -1,51 +1,80 @@
-import { Card } from "@/components/ui/card"; // Ajuste o caminho conforme seu projeto
-import Loader from "../ui/loader"; // Se não tiver, substitua por um spinner simples
-import { Separator } from "@/components/ui/separator";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Card } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator"; // Se não tiver, use <hr />
 import {
-  User,
-  Briefcase,
-  Zap,
-  DollarSign,
-  Search,
-  Layers,
-  Lightbulb,
-  TrendingUp,
-  Award,
-  Target,
-  BarChart3,
   Fingerprint,
+  User,
+  Search,
+  DollarSign,
+  Zap,
+  Layers,
+  Target,
+  Award,
+  BarChart3,
+  TrendingUp,
+  Lightbulb,
+  Briefcase,
 } from "lucide-react";
 
-export default function AnalyzerSkeleton({ loading }) {
-  if (loading) {
-    return (
-      <Card className="container mx-auto p-8 border-dashed w-full max-w-5xl bg-card/50 gap-1">
-        <header className="space-y-5">
-          <div className="space-y-3 animate-pulse">
-            <div className="flex items-center gap-3">
-              <Loader />
-              <h1 className="text-3xl font-bold text-muted-foreground/60">
-                Processando Raio-X...
-              </h1>
-            </div>
-            <p className="text-sm text-muted-foreground/50">
-              Cruzando dados de mercado, soft skills e histórico de
-              performance...
-            </p>
-          </div>
-          <Separator />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            <Skeleton className="h-64 w-full rounded-xl" />
-            <div className="col-span-2 space-y-4">
-              <Skeleton className="h-32 w-full rounded-xl" />
-              <Skeleton className="h-32 w-full rounded-xl" />
-            </div>
-          </div>
-        </header>
-      </Card>
-    );
-  }
+const mockProfileData = {
+  header: {
+    title: "Raio-X do Candidato",
+    subtitle: "Visão 360º: Competências, Potencial e Valor de Mercado.",
+    scoreText: "Top 5% do Mercado",
+    scoreColor: "primary",
+  },
+  identity: {
+    summary:
+      "Profissional híbrido e estratégico. Combina visão analítica de dados com forte capacidade de liderança. Histórico consistente de entregas acima da meta e rápida adaptação a novos cenários. Não apenas executa, mas otimiza processos.",
+    valuation: {
+      range: "R$ 12k - 18k",
+      type: "Faixa estimada (CLT/PJ)",
+      level: "Sênior",
+      tags: ["Negociação Alta", "Alta Demanda"],
+    },
+    softSkills: [
+      { name: "Liderança & Influência", pct: 92 },
+      { name: "Pensamento Analítico", pct: 88 },
+      { name: "Resiliência", pct: 95 },
+    ],
+  },
+  technical: {
+    main: [
+      "Gestão de Projetos",
+      "Análise de Dados",
+      "Planejamento Estratégico",
+      "CRM",
+      "Liderança de Equipes",
+    ],
+    differentials: [
+      "Inglês Fluente",
+      "Certificação PMP/Scrum",
+      "Power BI",
+      "Negociação B2B",
+    ],
+  },
+  trackRecord: [
+    {
+      title: "Aumento de Eficiência Operacional",
+      desc: "Implementou novos processos que reduziram o tempo de entrega em 30%, resultando em uma economia anual estimada em 6 dígitos.",
+      icon: "trending",
+    },
+    {
+      title: "Liderança em Projetos Críticos",
+      desc: "Gerenciou stakeholders multidisciplinares em ambiente de alta pressão, entregando o projeto principal dentro do prazo e com satisfação do cliente em NPS 95.",
+      icon: "lightbulb",
+    },
+  ],
+  insights: {
+    cultureFit:
+      "Empresas em fase de Escala (Scale-ups) ou Grandes Corporações buscando Transformação Digital.",
+    attentionPoint:
+      "Perfil tende a buscar autonomia. Evitar ambientes com microgerenciamento excessivo.",
+  },
+};
+
+export default function AnalyzerOutput({ data = mockProfileData }) {
+  // Proteção contra dados nulos (carregamento ou erro)
+  if (!data) return null;
 
   return (
     <Card className="w-full max-w-6xl mx-auto bg-card/50 border-dashed p-6 md:p-8">
@@ -57,10 +86,10 @@ export default function AnalyzerSkeleton({ loading }) {
               <Fingerprint className="w-4 h-4" /> Análise de Carreira
             </div>
             <h1 className="text-2xl md:text-3xl font-bold text-foreground">
-              Raio-X do Candidato
+              {data.header.title}
             </h1>
             <p className="text-muted-foreground text-sm md:text-base">
-              Visão 360º: Competências, Potencial e Valor de Mercado.
+              {data.header.subtitle}
             </p>
           </div>
 
@@ -70,14 +99,14 @@ export default function AnalyzerSkeleton({ loading }) {
               <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
             </div>
             <span className="text-sm font-medium text-primary">
-              Score: <span className="font-bold">Top 5% do Mercado</span>
+              Score: <span className="font-bold">{data.header.scoreText}</span>
             </span>
           </div>
         </div>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* COLUNA 1: IDENTIDADE & SOFT SKILLS (O Lado Humano) */}
+        {/* COLUNA 1: IDENTIDADE & SOFT SKILLS */}
         <div className="space-y-6">
           {/* Card: Resumo Executivo */}
           <div className="bg-background border rounded-xl p-5 shadow-sm space-y-4 relative overflow-hidden">
@@ -93,18 +122,11 @@ export default function AnalyzerSkeleton({ loading }) {
               </h3>
             </div>
             <p className="text-sm text-foreground/80 leading-relaxed z-10 relative">
-              Profissional{" "}
-              <span className="font-semibold text-primary">
-                híbrido e estratégico
-              </span>
-              . Combina visão analítica de dados com forte capacidade de
-              liderança. Histórico consistente de entregas acima da meta e
-              rápida adaptação a novos cenários. Não apenas executa, mas otimiza
-              processos.
+              {data.identity.summary}
             </p>
           </div>
 
-          {/* Card: Valor de Mercado (Estimativa) */}
+          {/* Card: Valor de Mercado */}
           <div className="bg-gradient-to-br from-green-600/5 to-emerald-500/30 border border-green-500/50 rounded-xl p-5 space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-green-400/50">
               <div className="flex items-center gap-3">
@@ -116,24 +138,26 @@ export default function AnalyzerSkeleton({ loading }) {
                 </h3>
               </div>
               <span className="text-[10px] font-bold bg-green-500 text-white px-2 py-0.5 rounded-full">
-                Sênior
+                {data.identity.valuation.level}
               </span>
             </div>
             <div className="text-center py-1">
               <span className="text-2xl md:text-3xl font-black text-green-600 tracking-tight">
-                R$ 12k - 18k
+                {data.identity.valuation.range}
               </span>
               <p className="text-xs text-green-600/80 mt-1 font-medium">
-                Faixa estimada (CLT/PJ)
+                {data.identity.valuation.type}
               </p>
             </div>
             <div className="flex gap-2 justify-center">
-              <span className="text-[10px] bg-white/5 px-2 py-1 rounded text-green-600 border border-green-400/50">
-                Negociação Alta
-              </span>
-              <span className="text-[10px] bg-white/5 px-2 py-1 rounded text-green-600 border border-green-400/50">
-                Alta Demanda
-              </span>
+              {data.identity.valuation.tags.map((tag, i) => (
+                <span
+                  key={i}
+                  className="text-[10px] bg-white/5 px-2 py-1 rounded text-green-600 border border-green-400/50"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
 
@@ -148,40 +172,27 @@ export default function AnalyzerSkeleton({ loading }) {
               </h3>
             </div>
             <ul className="space-y-4">
-              <li className="space-y-1">
-                <div className="flex justify-between text-xs font-medium">
-                  <span>Liderança & Influência</span>
-                  <span className="text-purple-500">92%</span>
-                </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-purple-400 to-purple-600 w-[92%]" />
-                </div>
-              </li>
-              <li className="space-y-1">
-                <div className="flex justify-between text-xs font-medium">
-                  <span>Pensamento Analítico</span>
-                  <span className="text-purple-500">88%</span>
-                </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-purple-400 to-purple-600 w-[88%]" />
-                </div>
-              </li>
-              <li className="space-y-1">
-                <div className="flex justify-between text-xs font-medium">
-                  <span>Resiliência</span>
-                  <span className="text-purple-500">95%</span>
-                </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-purple-400 to-purple-600 w-[95%]" />
-                </div>
-              </li>
+              {data.identity.softSkills.map((skill, i) => (
+                <li key={i} className="space-y-1">
+                  <div className="flex justify-between text-xs font-medium">
+                    <span>{skill.name}</span>
+                    <span className="text-purple-500">{skill.pct}%</span>
+                  </div>
+                  <div className="h-2 bg-muted rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-gradient-to-r from-purple-400 to-purple-600"
+                      style={{ width: `${skill.pct}%` }}
+                    />
+                  </div>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        {/* COLUNA 2: COMPETÊNCIAS & RESULTADOS (O Lado Técnico) */}
+        {/* COLUNA 2: COMPETÊNCIAS & RESULTADOS */}
         <div className="lg:col-span-2 space-y-6">
-          {/* Seção: Hard Skills / Stack */}
+          {/* Seção: Hard Skills */}
           <div className="space-y-3">
             <h3 className="flex items-center gap-2 font-bold text-lg text-foreground">
               <Layers className="w-5 h-5 text-primary" /> Caixa de Ferramentas
@@ -193,13 +204,7 @@ export default function AnalyzerSkeleton({ loading }) {
                     <Target className="w-3 h-3" /> Domínio Principal
                   </span>
                   <div className="flex flex-wrap gap-2">
-                    {[
-                      "Gestão de Projetos",
-                      "Análise de Dados",
-                      "Planejamento Estratégico",
-                      "CRM",
-                      "Liderança de Equipes",
-                    ].map((skill) => (
+                    {data.technical.main.map((skill) => (
                       <span
                         key={skill}
                         className="px-3 py-1 bg-primary/10 text-primary rounded-md text-sm font-medium border border-primary/20 hover:bg-primary/20 transition-colors cursor-default"
@@ -214,12 +219,7 @@ export default function AnalyzerSkeleton({ loading }) {
                     <Award className="w-3 h-3" /> Diferenciais
                   </span>
                   <div className="flex flex-wrap gap-2">
-                    {[
-                      "Inglês Fluente",
-                      "Certificação PMP/Scrum",
-                      "Power BI",
-                      "Negociação B2B",
-                    ].map((skill) => (
+                    {data.technical.differentials.map((skill) => (
                       <span
                         key={skill}
                         className="px-3 py-1 bg-muted text-muted-foreground rounded-md text-sm border hover:border-gray-400 transition-colors cursor-default"
@@ -233,55 +233,48 @@ export default function AnalyzerSkeleton({ loading }) {
             </div>
           </div>
 
-          {/* Seção: Histórico de Impacto (Genérico mas Poderoso) */}
+          {/* Seção: Histórico de Impacto */}
           <div className="space-y-3">
             <h3 className="flex items-center gap-2 font-bold text-lg text-foreground">
               <BarChart3 className="w-5 h-5 text-primary" /> Rastro de Sucesso
             </h3>
             <div className="bg-background border rounded-xl overflow-hidden shadow-sm">
               <div className="p-5 space-y-5">
-                {/* Conquista 1 */}
-                <div className="flex gap-4 items-start group">
-                  <div className="mt-1 bg-blue-500/10 p-2 rounded-lg text-blue-600 group-hover:scale-110 transition-transform">
-                    <TrendingUp size={18} />
+                {data.trackRecord.map((item, i) => (
+                  <div key={i}>
+                    <div className="flex gap-4 items-start group">
+                      <div
+                        className={`mt-1 p-2 rounded-lg group-hover:scale-110 transition-transform ${
+                          i === 0
+                            ? "bg-blue-500/10 text-blue-600"
+                            : "bg-orange-500/10 text-orange-600"
+                        }`}
+                      >
+                        {item.icon === "trending" ? (
+                          <TrendingUp size={18} />
+                        ) : (
+                          <Lightbulb size={18} />
+                        )}
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-sm md:text-base text-foreground">
+                          {item.title}
+                        </h4>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          {item.desc}
+                        </p>
+                      </div>
+                    </div>
+                    {i < data.trackRecord.length - 1 && (
+                      <Separator className="my-4" />
+                    )}
                   </div>
-                  <div>
-                    <h4 className="font-bold text-sm md:text-base text-foreground">
-                      Aumento de Eficiência Operacional
-                    </h4>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      Implementou novos processos que reduziram o tempo de
-                      entrega em{" "}
-                      <span className="font-bold text-foreground">30%</span>,
-                      resultando em uma economia anual estimada em 6 dígitos.
-                    </p>
-                  </div>
-                </div>
-
-                <Separator />
-
-                {/* Conquista 2 */}
-                <div className="flex gap-4 items-start group">
-                  <div className="mt-1 bg-orange-500/10 p-2 rounded-lg text-orange-600 group-hover:scale-110 transition-transform">
-                    <Lightbulb size={18} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-sm md:text-base text-foreground">
-                      Liderança em Projetos Críticos
-                    </h4>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      Gerenciou stakeholders multidisciplinares em ambiente de
-                      alta pressão, entregando o projeto principal dentro do
-                      prazo e com satisfação do cliente em{" "}
-                      <span className="font-bold text-foreground">NPS 95</span>.
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Seção: Insights do Recrutador (A "Opinião" da IA) */}
+          {/* Seção: Insights */}
           <div className="grid md:grid-cols-2 gap-4">
             <div className="bg-slate-400/10 border rounded-xl p-5">
               <div className="flex items-center gap-2 mb-2">
@@ -291,9 +284,7 @@ export default function AnalyzerSkeleton({ loading }) {
                 </span>
               </div>
               <p className="text-sm text-muted-foreground leading-snug">
-                Empresas em fase de <strong>Escala (Scale-ups)</strong> ou
-                Grandes Corporações buscando{" "}
-                <strong>Transformação Digital</strong>.
+                {data.insights.cultureFit}
               </p>
             </div>
 
@@ -305,8 +296,7 @@ export default function AnalyzerSkeleton({ loading }) {
                 </span>
               </div>
               <p className="text-sm text-muted-foreground leading-snug">
-                Perfil tende a buscar autonomia. Evitar ambientes com
-                microgerenciamento excessivo.
+                {data.insights.attentionPoint}
               </p>
             </div>
           </div>

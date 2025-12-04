@@ -52,13 +52,15 @@ export default function Page() {
       icon={<TextSearch />}
       title={"Analisador de Currículos"}
       error={error}
+      loading={loading}
+      output={output}
     >
       <form onSubmit={(event) => handleSubmit(event)} className="space-y-6">
         <FileInput setFile={setFile} />
         <SubmitButton loading={loading} />
       </form>
 
-      <AiOutput output={output} file={file} setError={setError} />
+      {/* <AiOutput output={output} file={file} setError={setError} /> */}
     </PageTemplate>
   );
 }

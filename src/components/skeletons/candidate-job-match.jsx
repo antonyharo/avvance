@@ -26,10 +26,7 @@ export default function CandidateJobMatchSkeleton({ loading }) {
             <div className="flex items-center gap-3">
               <Loader />
               <h1 className="text-3xl font-bold text-muted-foreground/60">
-                Cruzando Dados...{" "}
-                <span className="text-muted-foreground/30 font-normal">
-                  - Análise de Compatibilidade
-                </span>
+                Processando o match...
               </h1>
             </div>
             <p className="text-sm text-muted-foreground/50">

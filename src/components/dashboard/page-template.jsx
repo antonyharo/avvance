@@ -8,14 +8,26 @@ import LinkedinGeneratorSkeleton from "../skeletons/linkedin-generator";
 import ProfileGeneratorSkeleton from "../skeletons/profile-generator";
 import ReviewerSkeleton from "../skeletons/reviewer";
 
+import AnalyzerOutput from "../outputs/analyzer";
+
 const skeletonMap = {
-  "analyzer": AnalyzerSkeleton,
+  analyzer: AnalyzerSkeleton,
   "candidate-job-match": CandidateJobMatchSkeleton,
   "interview-simulator": InterviewSimulatorSkeleton,
-  "jobs": JobsSkeleton,
+  jobs: JobsSkeleton,
   "linkedin-generator": LinkedinGeneratorSkeleton,
   "profile-generator": ProfileGeneratorSkeleton,
-  "reviewer": ReviewerSkeleton,
+  reviewer: ReviewerSkeleton,
+};
+
+const outputMap = {
+  analyzer: AnalyzerOutput,
+  // "candidate-job-match": CandidateJobMatchOutput,
+  // "interview-simulator": InterviewSimulatorOutput,
+  // jobs: JobsOutput,
+  // "linkedin-generator": LinkedinGeneratorOutput,
+  // "profile-generator": ProfileGeneratorOutput,
+  // reviewer: ReviewerOutput,
 };
 
 export default function PageTemplate({
@@ -25,10 +37,12 @@ export default function PageTemplate({
   children,
   error,
   loading,
+  output,
 }) {
   const moduleInfo = modules?.[moduleName];
 
   const Skeleton = skeletonMap[moduleName];
+  const Output = outputMap[moduleName];
 
   return (
     <div className="space-y-8">
@@ -37,7 +51,13 @@ export default function PageTemplate({
       </h1>
 
       <p className="opacity-80 w-3xl mb-4">{moduleInfo.description}</p>
-      <p className="w-3xl mb-6 font-bold">{moduleInfo.instructions}</p>
+      <p
+        className={
+          "w-3xl border-l-4 pl-3 mb-6 font-bold " + moduleInfo.color.border
+        }
+      >
+        {moduleInfo.instructions}
+      </p>
 
       <span
         className={`fixed right-0 top-1/2 z-50 flex h-14 w-11 -translate-y-1/2 items-center justify-center rounded-l-full ${moduleInfo.color.bg} ${moduleInfo.color.text}`}
@@ -49,7 +69,20 @@ export default function PageTemplate({
 
       {children}
 
-      {Skeleton && <Skeleton />}
+      {loading && (
+        <div className="opacity-40">
+          <Skeleton loading={loading} />
+        </div>
+      )}
+
+      {!loading && !output && (
+        <div className="opacity-40">
+          <p className="mb-5">Ao usar este módulo você verá algo como:</p>
+          <Skeleton loading={false} />
+        </div>
+      )}
+
+      {!loading && output && <Output data={output} />}
     </div>
   );
 }

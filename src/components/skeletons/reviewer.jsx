@@ -28,7 +28,7 @@ export default function ReviewerSkeleton({ loading }) {
             <Loader />
             <div className="space-y-2">
               <h1 className="text-3xl font-bold text-muted-foreground/60">
-                Executando Auditoria Profunda...
+                Executando revisões profundas no seu currículo...
               </h1>
               <p className="text-sm text-muted-foreground/50">
                 Analisando semântica, consistência temporal e métricas de
