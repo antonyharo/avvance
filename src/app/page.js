@@ -37,6 +37,8 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Quote } from "lucide-react"; // Certifique-se de importar o Quote
 
+import Icon from "@/components/logo";
+
 // Dados dos depoimentos (Pode ficar fora do componente ou em um arquivo separado)
 const testimonials = [
   {
@@ -103,6 +105,7 @@ const testimonials = [
 
 import ModuleCard from "@/components/module-card";
 import Link from "next/link";
+import Logo from "@/components/logo";
 
 export default function LandingPage() {
   const { openSignUp } = useClerk();
@@ -112,14 +115,7 @@ export default function LandingPage() {
       {/* Navbar */}
       <header className="fixed top-0 w-full z-50 border-b border-white/10 bg-background/80 backdrop-blur-md">
         <nav className="container mx-auto px-6 h-20 flex items-center justify-between">
-          <div>
-            <div className="flex items-center gap-2">
-              <div className="bg-purple-500/10 p-2 rounded-lg text-purple-500">
-                <Sparkles size={24} />
-              </div>
-              <h1 className="text-3xl font-bold tracking-tight">Avvance</h1>
-            </div>
-          </div>
+          <Logo />
 
           <div className="flex gap-4 items-center">
             <div className="hidden md:block">
@@ -540,12 +536,7 @@ export default function LandingPage() {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div className="col-span-1 md:col-span-2">
-              <h2 className="text-2xl font-bold flex items-center gap-2 mb-4">
-                <span className="bg-purple-500 text-white p-1 rounded">
-                  <Sparkles size={18} />
-                </span>
-                Avvance
-              </h2>
+              <Logo className="mb-3" />
               <p className="text-muted-foreground max-w-sm">
                 Empoderando candidatos com a mesma inteligência artificial que
                 as grandes empresas usam para contratar. O jogo virou.

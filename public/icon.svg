@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Definição da Máscara para o recorte -->
+  <mask id="sparkle-cutout">
+    <!-- 1. Fundo branco (o que é branco aparece) -->
+    <rect width="24" height="24" fill="white" />
+    
+    <!-- 2. Os Sparkles em preto (o que é preto vira buraco transparente) -->
+    <!-- Agrupados, centralizados na maleta (12, 13) e reduzidos para 50% do tamanho -->
+    <g transform="translate(12 13) scale(0.5) translate(-12 -12)">
+      <!-- Estrela Central (Preenchida para criar o buraco) -->
+      <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" fill="black" stroke="none"/>
+      
+      <!-- Cruz no topo direito (Linhas grossas pretas) -->
+      <path d="M20 2v4 M22 4h-4" stroke="black" stroke-width="4" stroke-linecap="round"/>
+      
+      <!-- Bolinha no fundo esquerdo (Preenchida preta) -->
+      <circle cx="4" cy="20" r="2.5" fill="black" stroke="none"/>
+    </g>
+  </mask>
+
+  <!-- Alça da Maleta (Linha normal) -->
+  <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+
+  <!-- Corpo da Maleta (Preenchido + Máscara aplicada) -->
+  <rect x="2" y="6" width="20" height="14" rx="2" fill="currentColor" stroke="none" mask="url(#sparkle-cutout)"/>
+</svg>
