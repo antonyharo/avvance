@@ -66,7 +66,7 @@ export default function JobCard({ job, onDelete, isSaved, children }) {
     updateState({ loading: true, successMessage: "", errorMessage: "" });
 
     try {
-      const response = await fetch("/api/jobs/save", {
+      const response = await fetch("/api/jobs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(job),
@@ -96,7 +96,7 @@ export default function JobCard({ job, onDelete, isSaved, children }) {
     updateState({ loading: true, successMessage: "", errorMessage: "" });
 
     try {
-      const response = await fetch("/api/jobs/delete", {
+      const response = await fetch("/api/jobs", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: job.id }),

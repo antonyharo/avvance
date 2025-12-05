@@ -106,6 +106,8 @@ export default function Page() {
       icon={<Briefcase />}
       moduleName={"jobs"}
       error={error}
+      loading={loading}
+      // output={jobs}
     >
       <form onSubmit={handleSubmit(onSubmit)} className="w-xl space-y-8">
         <div className="space-y-8">
@@ -243,7 +245,7 @@ export default function Page() {
         </div>
       </form>
 
-      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <section className="mb-[8] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {jobs.length > 0 &&
           jobs.map((job) => (
             <JobCard key={job.id} job={job} onDelete={handleDelete} />

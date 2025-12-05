@@ -15,7 +15,7 @@ export async function POST(req) {
 
     const body = await req.json();
 
-    const response = await fetch("http://3.144.223.147:5000/jobs", {
+    const response = await fetch("http://18.188.212.117:5000/jobs", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,6 +47,8 @@ export async function POST(req) {
         `Erro ao buscar dados das análises: ${error.message || error}`
       );
     }
+
+    console.log(result);
 
     return NextResponse.json(result, { status: 200 });
   } catch (error) {

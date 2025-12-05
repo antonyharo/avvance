@@ -80,7 +80,7 @@ export default function PageTemplate({
       )}
 
       {!loading && !output && (
-        <div className="opacity-30">
+        <div className="opacity-60 dark:opacity-30">
           <p className="mb-5">Ao usar este módulo você verá algo como:</p>
           <Skeleton loading={false} />
         </div>
