@@ -18,6 +18,7 @@ export default function Page() {
   const [file, setFile] = useState(null);
   const [output, setOutput] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
     if (!file) {
@@ -25,6 +26,7 @@ export default function Page() {
       return;
     }
 
+    setLoading(true);
     setError(null);
     setOutput(null);
 
@@ -48,6 +50,8 @@ export default function Page() {
     } catch (error) {
       console.error("Erro:", error);
       setError("Erro ao processar: " + error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -57,6 +61,8 @@ export default function Page() {
       icon={<FileHeart />}
       moduleName={"candidate-job-match"}
       error={error}
+      loading={loading}
+      output={output}
     >
       <FileInput setFile={setFile} />
 
@@ -71,7 +77,7 @@ export default function Page() {
         onReset={onReset}
       />
 
-      <AiOutput output={output} />
+      {/* <AiOutput output={output} /> */}
     </PageTemplate>
   );
 }

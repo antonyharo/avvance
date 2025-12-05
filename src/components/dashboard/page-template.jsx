@@ -9,6 +9,7 @@ import ProfileGeneratorSkeleton from "../skeletons/profile-generator";
 import ReviewerSkeleton from "../skeletons/reviewer";
 
 import AnalyzerOutput from "../outputs/analyzer";
+import CandidateJobMatchOutput from "../outputs/candidate-job-match";
 
 const skeletonMap = {
   analyzer: AnalyzerSkeleton,
@@ -22,7 +23,7 @@ const skeletonMap = {
 
 const outputMap = {
   analyzer: AnalyzerOutput,
-  // "candidate-job-match": CandidateJobMatchOutput,
+  "candidate-job-match": CandidateJobMatchOutput,
   // "interview-simulator": InterviewSimulatorOutput,
   // jobs: JobsOutput,
   // "linkedin-generator": LinkedinGeneratorOutput,

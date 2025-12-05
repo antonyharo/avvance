@@ -14,6 +14,7 @@ import {
   GraduationCap,
   ScrollText,
   FileBadge,
+  LucideMessageCircleWarning,
 } from "lucide-react";
 
 export default function CandidateJobMatchSkeleton({ loading }) {
@@ -96,7 +97,7 @@ export default function CandidateJobMatchSkeleton({ loading }) {
                   Baixa Compatibilidade
                 </p>
               </div>
-              <div className="p-2 bg-red-100 text-red-600 rounded-full">
+              <div className="p-2 bg-red-500/20 text-red-600 rounded-full">
                 <Target className="w-5 h-5" />
               </div>
             </div>
@@ -118,7 +119,7 @@ export default function CandidateJobMatchSkeleton({ loading }) {
                   Aderência Parcial
                 </p>
               </div>
-              <div className="p-2 bg-yellow-100 text-yellow-600 rounded-full">
+              <div className="p-2 bg-yellow-500/20 text-yellow-600 rounded-full">
                 <Briefcase className="w-5 h-5" />
               </div>
             </div>
@@ -139,7 +140,7 @@ export default function CandidateJobMatchSkeleton({ loading }) {
                   Alta Aderência
                 </p>
               </div>
-              <div className="p-2 bg-green-100 text-green-600 rounded-full">
+              <div className="p-2 bg-green-500/20 text-green-600 rounded-full">
                 <BrainCircuit className="w-5 h-5" />
               </div>
             </div>
@@ -179,9 +180,7 @@ export default function CandidateJobMatchSkeleton({ loading }) {
           <div className="space-y-5">
             <div className="flex items-center gap-2 pb-2 border-b border-primary/20">
               <ScrollText className="w-5 h-5 text-primary" />
-              <h3 className="font-bold text-foreground">
-                Requisitos da Vaga 🏦
-              </h3>
+              <h3 className="font-bold text-foreground">Requisitos da Vaga</h3>
             </div>
 
             {/* Bloco 1 */}
@@ -215,11 +214,9 @@ export default function CandidateJobMatchSkeleton({ loading }) {
 
           {/* COLUNA CANDIDATO */}
           <div className="space-y-5">
-            <div className="flex items-center gap-2 pb-2 border-b border-blue-500/20">
+            <div className="flex items-center gap-2 pb-2 border-b border-primary/20">
               <GitPullRequest className="w-5 h-5 text-blue-500" />
-              <h3 className="font-bold text-foreground">
-                Perfil da Candidata 🚀
-              </h3>
+              <h3 className="font-bold text-foreground">Perfil da Candidata</h3>
             </div>
 
             {/* Bloco 1 - Comparativo */}
@@ -321,18 +318,25 @@ export default function CandidateJobMatchSkeleton({ loading }) {
 
         {/* SEÇÃO 4: SUGESTÃO FINAL */}
         <div className="flex justify-end pt-4">
-          <div className="text-right space-y-2 max-w-md">
+          <div className="text-right space-y-2 max-w-md w-full">
+            {/* Título */}
             <div className="flex items-center justify-end gap-2 text-primary font-bold text-sm uppercase tracking-wider">
               <FileBadge className="w-4 h-4" /> Recomendação do Sistema
             </div>
-            <div className="inline-block bg-yellow-100 text-yellow-700 px-6 py-3 rounded-lg font-bold text-sm border border-yellow-200 shadow-sm">
-              ⚠️ Contratação de Risco (Desvio de Função)
+
+            {/* Alerta */}
+            <div className="flex flex-wrap gap-2 items-center bg-yellow-500/20 text-yellow-400 px-4 py-3 rounded-lg font-bold text-sm border border-yellow-400 shadow-sm ml-auto w-fit justify-end text-right">
+              <LucideMessageCircleWarning /> Contratação de Risco (Desvio de
+              Função)
             </div>
-            <p className="text-xs text-muted-foreground italic">
-              "Sugestão: Redirecionar candidata para a vaga de 'Coordenador de
-              Inovação Digital' ou 'Product Manager' da Squad de Mobile. Para a
-              vaga atual de GP Legado, ela está superqualificada em agilidade e
-              subqualificada em processos tradicionais."
+
+            {/* Texto */}
+            <p className="text-xs text-muted-foreground italic text-right">
+              Sugestão: Você pode se encaixar melhor nas vagas de Coordenador de
+              Inovação Digital ou Product Manager da Squad de Mobile. Para a
+              vaga atual de GP Legado, seu perfil demonstra uma forte
+              qualificação em práticas ágeis, mas ainda não atende plenamente às
+              exigências relacionadas aos processos tradicionais.
             </p>
           </div>
         </div>

@@ -15,7 +15,7 @@ import {
   Briefcase,
 } from "lucide-react";
 
-const mockProfileData = {
+const mockData = {
   header: {
     title: "Raio-X do Candidato",
     subtitle: "Visão 360º: Competências, Potencial e Valor de Mercado.",
@@ -72,7 +72,7 @@ const mockProfileData = {
   },
 };
 
-export default function AnalyzerOutput({ data = mockProfileData }) {
+export default function AnalyzerOutput({ data = mockData }) {
   // Proteção contra dados nulos (carregamento ou erro)
   if (!data) return null;
 
@@ -83,7 +83,7 @@ export default function AnalyzerOutput({ data = mockProfileData }) {
         <div className="flex flex-col md:flex-row justify-between md:items-center gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2 text-primary font-bold text-xs tracking-wider uppercase">
-              <Fingerprint className="w-4 h-4" /> Análise de Carreira
+              <Fingerprint className="w-4 h-4" /> Raio-X
             </div>
             <h1 className="text-2xl md:text-3xl font-bold text-foreground">
               {data.header.title}

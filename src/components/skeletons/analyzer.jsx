@@ -54,7 +54,7 @@ export default function AnalyzerSkeleton({ loading }) {
         <div className="flex flex-col md:flex-row justify-between md:items-center gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2 text-primary font-bold text-xs tracking-wider uppercase">
-              <Fingerprint className="w-4 h-4" /> Análise de Carreira
+              <Fingerprint className="w-4 h-4" /> Raio-X
             </div>
             <h1 className="text-2xl md:text-3xl font-bold text-foreground">
               Raio-X do Candidato
