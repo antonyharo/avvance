@@ -2,6 +2,12 @@ import modules from "@/config/modules.json";
 
 import { Card, CardHeader, CardTitle, CardDescription } from "./ui/card";
 
+import AnalyzerOutput from "./outputs/analyzer";
+import CandidateJobMatchOutput from "./outputs/candidate-job-match";
+import LinkedinGeneratorOutput from "./outputs/linkedin-generator";
+import ProfileGeneratorOutput from "./outputs/profile-generator";
+import ReviewerOutput from "./outputs/reviewer";
+
 import {
   Dialog,
   DialogDescription,
@@ -28,6 +34,7 @@ import { formatToBrasilia } from "@/lib/utils";
 
 import MarkdownComponent from "@/components/ui/markdown-component";
 import CopyButton from "./ui/copy-button";
+import AnalyzerSkeleton from "./skeletons/analyzer";
 
 const iconMap = {
   Briefcase,
@@ -39,15 +46,30 @@ const iconMap = {
   TextSearch,
 };
 
+const outputMap = {
+  analyzer: AnalyzerOutput,
+  "candidate-job-match": CandidateJobMatchOutput,
+  "linkedin-generator": LinkedinGeneratorOutput,
+  "profile-generator": ProfileGeneratorOutput,
+  reviewer: ReviewerOutput,
+  // "interview-simulator": InterviewSimulatorOutput,
+  // jobs: JobsOutput,
+};
+
 export default function UsageCard({ data }) {
   const moduleInfo = modules?.[data.module];
+  const Output = outputMap[data.module];
   const Icon = iconMap[moduleInfo?.icon] || File;
 
   // fallback amigável
-  const safeOutput =
-    data.output?.length > 0
-      ? data.output
-      : "Nenhum conteúdo disponível para este registro.";
+  // const safeOutput =
+  //   data.output?.length > 0
+  //     ? data.output
+  //     : "Nenhum conteúdo disponível para este registro.";
+
+  // console.log(data.output);
+
+  console.log(Output);
 
   return (
     <Dialog>
@@ -75,8 +97,8 @@ export default function UsageCard({ data }) {
         </Card>
       </DialogTrigger>
 
-      <DialogContent className="h-7xl max-h-[75vh] min-w-6xl flex-wrap flex">
-        <ScrollArea className="h-[60vh]">
+      <DialogContent className="h-[90vh] max-h-[90vh] min-w-4xl flex-wrap flex">
+        <ScrollArea className="h-[82vh]">
           <div className="space-y-6">
             <DialogHeader className="space-y-2 text-center">
               <DialogTitle className="text-2xl font-bold">
@@ -89,14 +111,8 @@ export default function UsageCard({ data }) {
             </DialogHeader>
 
             <Separator />
-
-            <div className="space-y-4">
-              <CopyButton buttonText="Copiar" text={safeOutput} />
-
-              <div className="prose dark:prose-invert max-w-none">
-                <MarkdownComponent>{safeOutput}</MarkdownComponent>
-              </div>
-            </div>
+            <Output data={JSON.parse(data.output)} />
+            {/* <AnalyzerOutput /> */}
           </div>
         </ScrollArea>
       </DialogContent>
