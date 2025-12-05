@@ -5,7 +5,7 @@ import { useJobForm } from "@/hooks/use-job-form";
 
 import { MessageCircleQuestion } from "lucide-react";
 
-import PageTemplate from "@/components/dashboard/page-template";
+import PageTemplate from "@/components/page-template";
 import FileInput from "@/components/ui/file-input";
 import JobForm from "@/components/job-form";
 import AiOutput from "@/components/dashboard/ai-output";

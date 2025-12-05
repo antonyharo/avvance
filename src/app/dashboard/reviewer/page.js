@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { Gavel } from "lucide-react";
 
-import PageTemplate from "@/components/dashboard/page-template";
+import PageTemplate from "@/components/page-template";
 import FileInput from "@/components/ui/file-input";
 import SubmitButton from "@/components/ui/submit-button";
 import AiOutput from "@/components/dashboard/ai-output";
@@ -34,7 +34,7 @@ export default function Page() {
       }
 
       const result = await response.json();
-      console.log(result)
+      console.log(result);
       setOutput(result.output || "Análise concluída com sucesso!");
     } catch (error) {
       setError("Erro ao processar a requisição: " + error.message);
@@ -49,13 +49,15 @@ export default function Page() {
       title={"Revisor de Currículos"}
       moduleName={"reviewer"}
       error={error}
+      loading={loading}
+      output={output}
     >
       <form onSubmit={(event) => handleSubmit(event)} className="space-y-6">
         <FileInput setFile={setFile} />
         <SubmitButton loading={loading} />
       </form>
 
-      <AiOutput output={output} />
+      {/* <AiOutput output={output} /> */}
     </PageTemplate>
   );
 }

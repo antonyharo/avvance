@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { User } from "lucide-react";
 
-import PageTemplate from "@/components/dashboard/page-template";
+import PageTemplate from "@/components/page-template";
 import SubmitButton from "@/components/ui/submit-button";
 import FileInput from "@/components/ui/file-input";
 import AiOutput from "@/components/dashboard/ai-output";
@@ -48,13 +48,13 @@ export default function Page() {
       icon={<User />}
       moduleName={"linkedin-generator"}
       error={error}
+      loading={loading}
+      output={output}
     >
       <form onSubmit={(event) => handleSubmit(event)} className="space-y-6">
         <FileInput setFile={setFile} />
         <SubmitButton loading={loading} />
       </form>
-
-      <AiOutput output={output} />
     </PageTemplate>
   );
 }

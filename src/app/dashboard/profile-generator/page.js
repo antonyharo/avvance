@@ -5,7 +5,7 @@ import { UserCheck } from "lucide-react";
 
 import { useJobForm } from "@/hooks/use-job-form";
 import JobForm from "@/components/job-form";
-import PageTemplate from "@/components/dashboard/page-template";
+import PageTemplate from "@/components/page-template";
 import AiOutput from "@/components/dashboard/ai-output";
 import OutputSkeleton from "@/components/skeletons/analyzer";
 
@@ -15,8 +15,10 @@ export default function Page() {
 
   const [output, setOutput] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
+    setLoading(true);
     setError(null);
     setOutput(null);
 
@@ -35,10 +37,12 @@ export default function Page() {
         throw new Error(result.message || "Erro desconhecido");
       }
 
-      setOutput(result.response);
+      setOutput(result.output);
     } catch (err) {
       console.error(err);
       setError(err.message || "Erro ao conectar com o servidor");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -48,6 +52,8 @@ export default function Page() {
       icon={<UserCheck />}
       moduleName={"profile-generator"}
       error={error}
+      loading={loading}
+      output={output}
     >
       <JobForm
         register={register}
@@ -58,7 +64,7 @@ export default function Page() {
         onReset={onReset}
       />
 
-      <AiOutput output={output} />
+      {/* <AiOutput output={output} /> */}
     </PageTemplate>
   );
 }

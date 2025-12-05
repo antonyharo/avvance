@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { TextSearch } from "lucide-react";
 
-import PageTemplate from "@/components/dashboard/page-template";
+import PageTemplate from "@/components/page-template";
 import FileInput from "@/components/ui/file-input";
 import SubmitButton from "@/components/ui/submit-button";
 import AiOutput from "@/components/dashboard/ai-output";

@@ -22,7 +22,7 @@ import {
 export default function ReviewerSkeleton({ loading }) {
   if (loading) {
     return (
-      <Card className="container mx-auto p-8 border-dashed w-full max-w-6xl bg-card/50 gap-1">
+      <Card className="container mx-auto p-8 border-dashed w-full max-w-6xl bg-card/500/10 gap-1">
         <header className="space-y-6">
           <div className="flex items-center gap-4 animate-pulse">
             <Loader />
@@ -51,13 +51,13 @@ export default function ReviewerSkeleton({ loading }) {
   }
 
   return (
-    <Card className="w-full max-w-7xl mx-auto bg-card/50 border-dashed p-6 md:p-10">
+    <Card className="w-full max-w-7xl mx-auto bg-card/500/10 border-dashed p-6 md:p-10">
       {/* HEADER: VISÃO MACRO */}
       <header className="mb-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
           <div className="space-y-2">
             <div className="flex items-center gap-2 text-primary font-bold text-xs tracking-widest uppercase bg-primary/10 w-fit px-2 py-1 rounded">
-              <Microscope className="w-4 h-4" /> Auditoria de Currículo v3.5
+              <Microscope className="w-4 h-4" /> revisão do currículo
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-foreground">
               Relatório de Conformidade & Impacto
@@ -80,13 +80,15 @@ export default function ReviewerSkeleton({ loading }) {
               Nota Geral (ATS Score)
             </span>
             <div className="flex items-baseline gap-1">
-              <span className="text-4xl font-black text-yellow-500">75</span>
+              <span className="text-4xl font-black text-yellow-500/100">
+                75
+              </span>
               <span className="text-lg text-muted-foreground/60 font-medium">
                 /100
               </span>
             </div>
             <div className="w-32 h-2 bg-muted rounded-full overflow-hidden mt-1">
-              <div className="h-full bg-yellow-500 w-[75%]" />
+              <div className="h-full bg-yellow-500/100 w-[75%]" />
             </div>
           </div>
         </div>
@@ -145,7 +147,7 @@ export default function ReviewerSkeleton({ loading }) {
                     <span className="font-bold text-sm">Trajetória</span>
                     <Badge
                       variant="outline"
-                      className="text-yellow-600 bg-yellow-50 border-yellow-200"
+                      className="text-yellow-600 bg-yellow-500/10 border-yellow-400/30"
                     >
                       3/5
                     </Badge>
@@ -173,7 +175,7 @@ export default function ReviewerSkeleton({ loading }) {
                     <span className="font-bold text-sm">Resultados</span>
                     <Badge
                       variant="outline"
-                      className="text-red-600 bg-red-50 border-red-200"
+                      className="text-red-600 bg-red-500/10 border-red-400/30"
                     >
                       2/5
                     </Badge>
@@ -201,7 +203,7 @@ export default function ReviewerSkeleton({ loading }) {
                     <span className="font-bold text-sm">Competências</span>
                     <Badge
                       variant="outline"
-                      className="text-blue-600 bg-blue-50 border-blue-200"
+                      className="text-blue-600 bg-blue-500/10 border-blue-400/30"
                     >
                       3/5
                     </Badge>
@@ -248,7 +250,7 @@ export default function ReviewerSkeleton({ loading }) {
                 {/* ANTES */}
                 <div className="p-6 space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-red-500 bg-red-100 px-2 py-1 rounded">
+                    <span className="text-xs font-bold text-red-500 bg-red-400/10 px-2 py-1 rounded">
                       ORIGINAL
                     </span>
                     <span className="text-xs text-muted-foreground">
@@ -267,9 +269,9 @@ export default function ReviewerSkeleton({ loading }) {
                 </div>
 
                 {/* DEPOIS */}
-                <div className="p-6 space-y-4 bg-green-50/10">
+                <div className="p-6 space-y-4 bg-green-300/10">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-green-600 bg-green-100 px-2 py-1 rounded">
+                    <span className="text-xs font-bold text-green-500 bg-green-400/20 px-2 py-1 rounded">
                       REFATORADO
                     </span>
                     <span className="text-xs text-muted-foreground">
@@ -278,12 +280,12 @@ export default function ReviewerSkeleton({ loading }) {
                   </div>
                   <p className="text-sm text-foreground font-medium leading-relaxed">
                     "Desenvolvi solução de automação em Python/XML-RPC que{" "}
-                    <span className="bg-green-100 text-green-800 px-1 rounded">
+                    <span className="bg-green-400/30 px-1 rounded">
                       reduziu em 70%
                     </span>{" "}
                     o tempo de processamento de dados. A ferramenta eliminou
                     erros manuais e foi{" "}
-                    <span className="bg-green-100 text-green-800 px-1 rounded">
+                    <span className="bg-green-400/30 px-1 rounded">
                       adotada oficialmente
                     </span>{" "}
                     como produto da empresa."
@@ -309,12 +311,12 @@ export default function ReviewerSkeleton({ loading }) {
           {/* QUICK WINS */}
           <div className="space-y-4">
             <h3 className="font-bold text-lg flex items-center gap-2">
-              <CalendarClock className="w-5 h-5 text-yellow-500" /> Correções
-              Imediatas
+              <CalendarClock className="w-5 h-5 text-yellow-500/100" />{" "}
+              Correções Imediatas
             </h3>
             <div className="space-y-3">
-              <Card className="p-4 border-l-4 border-l-red-500 shadow-sm bg-red-50/10">
-                <h4 className="font-bold text-sm text-foreground mb-1">
+              <Card className="p-4 border-l-4 border-l-red-500 shadow-sm bg-red-300/10 rounded-l-none gap-2">
+                <h4 className="font-bold text-sm text-foreground">
                   Ajustar Datas do Estágio
                 </h4>
                 <p className="text-xs text-muted-foreground">
@@ -322,8 +324,8 @@ export default function ReviewerSkeleton({ loading }) {
                   futuro. Ambiguidade mata processos.
                 </p>
               </Card>
-              <Card className="p-4 border-l-4 border-l-orange-500 shadow-sm bg-orange-50/10">
-                <h4 className="font-bold text-sm text-foreground mb-1">
+              <Card className="p-4 border-l-4 border-l-orange-500 shadow-sm bg-orange-300/10 rounded-l-none gap-2">
+                <h4 className="font-bold text-sm text-foreground">
                   Limpar Seção "Conhecimentos"
                 </h4>
                 <p className="text-xs text-muted-foreground">
@@ -331,8 +333,8 @@ export default function ReviewerSkeleton({ loading }) {
                   categorizados (Linguagens, Frameworks, Tools).
                 </p>
               </Card>
-              <Card className="p-4 border-l-4 border-l-blue-500 shadow-sm bg-blue-50/10">
-                <h4 className="font-bold text-sm text-foreground mb-1">
+              <Card className="p-4 border-l-4 border-l-blue-500 shadow-sm bg-blue-300/10 rounded-l-none gap-2">
+                <h4 className="font-bold text-sm text-foreground">
                   Reescrever o Resumo
                 </h4>
                 <p className="text-xs text-muted-foreground">
@@ -399,7 +401,7 @@ export default function ReviewerSkeleton({ loading }) {
           </div>
 
           {/* INSIGHT DE NICHO */}
-          <div className="bg-gradient-to-br from-primary/10 to-purple-500/10 border border-primary/20 rounded-xl p-5">
+          <div className="bg-gradient-to-br from-transparent to-purple-500/10 border border-primary/20 rounded-xl p-5">
             <h4 className="font-bold text-sm text-foreground flex items-center gap-2 mb-2">
               <Search className="w-4 h-4" /> Posicionamento Ideal
             </h4>

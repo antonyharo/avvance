@@ -122,7 +122,8 @@ export default function ReferenceProfileGenerator({ loading }) {
               </li>
               <li className="text-sm">
                 <span className="font-bold text-foreground flex items-center gap-1">
-                  Pós-Graduação <Award className="w-3 h-3 text-yellow-500" />
+                  Pós-Graduação{" "}
+                  <Award className="w-3 h-3 text-yellow-400/500" />
                 </span>
                 <span className="text-muted-foreground text-xs">
                   Gestão de Vendas, BI ou CRM.
@@ -316,25 +317,25 @@ export default function ReferenceProfileGenerator({ loading }) {
           </div>
 
           {/* Seção: Diferenciais (Bonus Track) */}
-          <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 rounded-xl p-6">
-            <h3 className="flex items-center gap-2 font-bold text-lg text-yellow-800 mb-4">
+          <div className="bg-gradient-to-r from-yellow-400/30 to-orange-500/30 border border-yellow-600/50 rounded-xl p-6">
+            <h3 className="flex items-center gap-2 font-bold text-lg text-yellow-400 mb-4">
               <Award className="w-5 h-5" /> Fatores "Uau" (Diferenciais)
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="flex items-center gap-2 text-sm text-yellow-900 bg-white/50 p-2 rounded border border-yellow-100">
-                <PieChart className="w-4 h-4 text-yellow-600" />
+              <div className="flex items-center gap-2 text-sm text-primary bg-yellow-500/10 p-2 rounded border border-yellow-500/30">
+                <PieChart className="w-4 h-4 text-yellow-400" />
                 Conhecimento em Marketing Digital / Inbound.
               </div>
-              <div className="flex items-center gap-2 text-sm text-yellow-900 bg-white/50 p-2 rounded border border-yellow-100">
-                <Wrench className="w-4 h-4 text-yellow-600" />
+              <div className="flex items-center gap-2 text-sm text-primary bg-yellow-500/10 p-2 rounded border border-yellow-500/30">
+                <Wrench className="w-4 h-4 text-yellow-400" />
                 Implementação/Customização de CRM.
               </div>
-              <div className="flex items-center gap-2 text-sm text-yellow-900 bg-white/50 p-2 rounded border border-yellow-100">
-                <Users className="w-4 h-4 text-yellow-600" />
+              <div className="flex items-center gap-2 text-sm text-primary bg-yellow-500/10 p-2 rounded border border-yellow-500/30">
+                <Users className="w-4 h-4 text-yellow-400" />
                 Treinamento de equipes de vendas.
               </div>
-              <div className="flex items-center gap-2 text-sm text-yellow-900 bg-white/50 p-2 rounded border border-yellow-100">
-                <Award className="w-4 h-4 text-yellow-600" />
+              <div className="flex items-center gap-2 text-sm text-primary bg-yellow-500/10 p-2 rounded border border-yellow-500/30">
+                <Award className="w-4 h-4 text-yellow-400" />
                 Certificação Salesforce/HubSpot.
               </div>
             </div>

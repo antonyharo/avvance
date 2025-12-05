@@ -1,15 +1,18 @@
 import modules from "@/config/modules.json";
 
-import AnalyzerSkeleton from "../skeletons/analyzer";
-import CandidateJobMatchSkeleton from "../skeletons/candidate-job-match";
-import InterviewSimulatorSkeleton from "../skeletons/interview-simulator";
-import JobsSkeleton from "../skeletons/jobs";
-import LinkedinGeneratorSkeleton from "../skeletons/linkedin-generator";
-import ProfileGeneratorSkeleton from "../skeletons/profile-generator";
-import ReviewerSkeleton from "../skeletons/reviewer";
+import AnalyzerSkeleton from "./skeletons/analyzer";
+import CandidateJobMatchSkeleton from "./skeletons/candidate-job-match";
+import InterviewSimulatorSkeleton from "./skeletons/interview-simulator";
+import JobsSkeleton from "./skeletons/jobs";
+import LinkedinGeneratorSkeleton from "./skeletons/linkedin-generator";
+import ProfileGeneratorSkeleton from "./skeletons/profile-generator";
+import ReviewerSkeleton from "./skeletons/reviewer";
 
-import AnalyzerOutput from "../outputs/analyzer";
-import CandidateJobMatchOutput from "../outputs/candidate-job-match";
+import AnalyzerOutput from "./outputs/analyzer";
+import CandidateJobMatchOutput from "./outputs/candidate-job-match";
+import LinkedinGeneratorOutput from "./outputs/linkedin-generator";
+import ProfileGeneratorOutput from "./outputs/profile-generator";
+import ReviewerOutput from "./outputs/reviewer";
 
 const skeletonMap = {
   analyzer: AnalyzerSkeleton,
@@ -24,11 +27,11 @@ const skeletonMap = {
 const outputMap = {
   analyzer: AnalyzerOutput,
   "candidate-job-match": CandidateJobMatchOutput,
+  "linkedin-generator": LinkedinGeneratorOutput,
+  "profile-generator": ProfileGeneratorOutput,
+  reviewer: ReviewerOutput,
   // "interview-simulator": InterviewSimulatorOutput,
   // jobs: JobsOutput,
-  // "linkedin-generator": LinkedinGeneratorOutput,
-  // "profile-generator": ProfileGeneratorOutput,
-  // reviewer: ReviewerOutput,
 };
 
 export default function PageTemplate({
@@ -77,7 +80,7 @@ export default function PageTemplate({
       )}
 
       {!loading && !output && (
-        <div className="opacity-40">
+        <div className="opacity-30">
           <p className="mb-5">Ao usar este módulo você verá algo como:</p>
           <Skeleton loading={false} />
         </div>

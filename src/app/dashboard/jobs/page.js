@@ -19,7 +19,7 @@ import {
 
 import { sortByRelevance } from "@/lib/utils";
 
-import PageTemplate from "@/components/dashboard/page-template";
+import PageTemplate from "@/components/page-template";
 import SubmitButton from "@/components/ui/submit-button";
 import JobCard from "@/components/job-card";
 

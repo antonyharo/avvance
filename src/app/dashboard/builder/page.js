@@ -5,7 +5,7 @@ import { FileText } from "lucide-react";
 
 import { useCvForm } from "@/hooks/use-cv-form";
 import CvBuilderForm from "@/components/cv-builder-form";
-import PageTemplate from "@/components/dashboard/page-template";
+import PageTemplate from "@/components/page-template";
 import AiOutput from "@/components/dashboard/ai-output";
 
 export default function Page() {
