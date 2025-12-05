@@ -157,7 +157,7 @@ export async function POST(req) {
     await supabase.from("usage_logs").insert([
       {
         user_id: userId,
-        module: "candidate_job_match",
+        module: "candidate-job-match",
         output: JSON.stringify(validatedData),
       },
     ]);

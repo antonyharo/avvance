@@ -137,7 +137,7 @@ export async function POST(req) {
     await supabase.from("usage_logs").insert([
       {
         user_id: userId,
-        module: "benchmark_generator",
+        module: "profile-generator",
         output: JSON.stringify(validatedData),
       },
     ]);

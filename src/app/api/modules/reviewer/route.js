@@ -146,7 +146,7 @@ export async function POST(req) {
     await supabase.from("usage_logs").insert([
       {
         user_id: userId,
-        module: "resume_audit",
+        module: "reviewer",
         output: JSON.stringify(validatedData),
       },
     ]);

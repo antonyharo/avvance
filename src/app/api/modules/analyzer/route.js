@@ -181,7 +181,7 @@ export async function POST(req) {
     const { error: dbError } = await supabase.from("usage_logs").insert([
       {
         user_id: userId,
-        module: "candidate_xray",
+        module: "analyzer",
         output: JSON.stringify(validatedData),
       },
     ]);

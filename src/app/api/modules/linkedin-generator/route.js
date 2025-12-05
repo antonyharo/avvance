@@ -118,7 +118,7 @@ export async function POST(req) {
     await supabase.from("usage_logs").insert([
       {
         user_id: userId,
-        module: "linkedin_generator",
+        module: "linkedin-generator",
         output: JSON.stringify(validatedData),
       },
     ]);
