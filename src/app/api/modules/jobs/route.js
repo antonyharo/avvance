@@ -38,7 +38,7 @@ export async function POST(req) {
       {
         user_id: userId,
         module: "jobs",
-        output: result,
+        output: result.jobs,
       },
     ]);
 

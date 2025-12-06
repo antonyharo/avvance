@@ -7,6 +7,7 @@ import CandidateJobMatchOutput from "./outputs/candidate-job-match";
 import LinkedinGeneratorOutput from "./outputs/linkedin-generator";
 import ProfileGeneratorOutput from "./outputs/profile-generator";
 import ReviewerOutput from "./outputs/reviewer";
+import JobsOutput from "./outputs/jobs";
 
 import {
   Dialog,
@@ -52,8 +53,8 @@ const outputMap = {
   "linkedin-generator": LinkedinGeneratorOutput,
   "profile-generator": ProfileGeneratorOutput,
   reviewer: ReviewerOutput,
+  jobs: JobsOutput,
   // "interview-simulator": InterviewSimulatorOutput,
-  // jobs: JobsOutput,
 };
 
 export default function UsageCard({ data }) {

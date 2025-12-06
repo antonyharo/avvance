@@ -79,7 +79,7 @@ export default function PageTemplate({
         </div>
       )}
 
-      {!loading && !output && (
+      {!loading && !output && moduleName != "interview-simulator" && (
         <div className="opacity-60 dark:opacity-30">
           <p className="mb-5">Ao usar este módulo você verá algo como:</p>
           <Skeleton loading={false} />
