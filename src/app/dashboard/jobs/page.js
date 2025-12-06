@@ -109,7 +109,11 @@ export default function Page() {
       loading={loading}
       // output={jobs}
     >
-      <form onSubmit={handleSubmit(onSubmit)} className="w-xl space-y-8">
+      {/* Alterado: w-xl para w-full max-w-xl para fluidez no mobile */}
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full max-w-xl space-y-8"
+      >
         <div className="space-y-8">
           <div className="grid gap-3">
             <Label htmlFor="search_term" className="flex items-center gap-2">
@@ -141,9 +145,10 @@ export default function Page() {
               <Baby size={15} />
               Nivel das vagas:
             </Label>
+            {/* Alterado: gap-8 para gap-4 sm:gap-8 */}
             <RadioGroup
               defaultValue="junior"
-              className="text-1xl flex flex-wrap gap-8"
+              className="text-1xl flex flex-wrap gap-4 sm:gap-8"
             >
               {[
                 ["junior", "Júnior"],
@@ -176,9 +181,10 @@ export default function Page() {
             <Grid3x3 size={15} /> Tipo das vagas:
           </Label>
 
+          {/* Alterado: gap-8 para gap-4 sm:gap-8 */}
           <RadioGroup
             defaultValue="fulltime"
-            className="text-1xl flex flex-wrap gap-8"
+            className="text-1xl flex flex-wrap gap-4 sm:gap-8"
           >
             {[
               ["fulltime", "Tempo Integral"],
@@ -209,9 +215,10 @@ export default function Page() {
             <Calendar size={15} />
             Buscar vagas de:
           </Label>
+          {/* Alterado: gap-8 para gap-4 sm:gap-8 */}
           <RadioGroup
             defaultValue={24}
-            className="text-1xl flex flex-wrap gap-8"
+            className="text-1xl flex flex-wrap gap-4 sm:gap-8"
           >
             {[
               [24, "Hoje"],
@@ -245,7 +252,8 @@ export default function Page() {
         </div>
       </form>
 
-      <section className="mb-[8] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {/* Alterado: mb-[8] corrigido para mb-8 */}
+      <section className="mb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {jobs.length > 0 &&
           jobs.map((job) => (
             <JobCard key={job.id} job={job} onDelete={handleDelete} />

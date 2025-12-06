@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator"; // Se não tiver, use <hr />
+import { Separator } from "@/components/ui/separator";
 import {
   Fingerprint,
   User,

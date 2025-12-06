@@ -57,7 +57,7 @@ export default function Page() {
     >
       <form onSubmit={(event) => handleSubmit(event)} className="space-y-6">
         <FileInput setFile={setFile} />
-        <SubmitButton loading={loading} />
+        <SubmitButton text={"Analisar"} loading={loading} />
       </form>
 
       {/* <AiOutput output={output} file={file} setError={setError} /> */}

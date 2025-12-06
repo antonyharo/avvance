@@ -153,7 +153,7 @@ export default function CandidateJobMatchOutput({ data = mockMatchData }) {
   };
 
   return (
-    <Card className="container mx-auto p-8 border-dashed w-full max-w-5xl bg-card/50 gap-1">
+    <Card className="container mx-auto p-8 border-dashed w-full max-w-6xl bg-card/50 gap-1">
       {/* HEADER */}
       <header className="space-y-5">
         <div className="flex justify-between items-start">

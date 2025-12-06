@@ -69,14 +69,14 @@ export default function ReferenceProfileGenerator({ loading }) {
             </p>
           </div>
 
-          <div className="flex gap-2">
+          {/* <div className="flex gap-2">
             <button className="flex items-center gap-2 px-4 py-2 bg-background border rounded-lg text-sm font-medium hover:bg-muted transition-colors">
               <Copy className="w-4 h-4" /> Copiar
             </button>
             <button className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors shadow-sm">
               <Download className="w-4 h-4" /> Baixar PDF
             </button>
-          </div>
+          </div> */}
         </div>
       </header>
 

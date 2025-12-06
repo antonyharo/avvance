@@ -72,7 +72,7 @@ export default function ReviewerOutput({ data = mockReviewerData }) {
   const scoreColor = getScoreColor(data.header.atsScore);
 
   return (
-    <Card className="w-full max-w-7xl mx-auto bg-card/50 border-dashed p-6 md:p-10">
+    <Card className="w-full max-w-6xl mx-auto bg-card/50 border-dashed p-6 md:p-10">
       {/* HEADER */}
       <header className="mb-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">

@@ -78,7 +78,7 @@ export default function UsageCard({ data }) {
         <Card
           key={data.id}
           className="
-            cursor-pointer transition duration-200 rounded-l-none border-l-5 hover:border-purple-400 hover:translate-y-[-0.2rem] p-3
+            cursor-pointer transition duration-200 rounded-l-none border-l-[5px] hover:border-purple-400 hover:translate-y-[-0.2rem] p-3
           "
         >
           <CardHeader className="flex flex-row gap-4 items-center">
@@ -98,20 +98,23 @@ export default function UsageCard({ data }) {
         </Card>
       </DialogTrigger>
 
-      <DialogContent className="h-[90vh] max-h-[90vh] min-w-4xl flex-wrap flex">
-        <ScrollArea className="h-[82vh]">
-          <div className="space-y-6">
-            <DialogHeader className="space-y-2 text-center">
-              <DialogTitle className="text-2xl font-bold">
-                {moduleInfo?.title}
-              </DialogTitle>
+      {/* Alterado: w-[95vw] para mobile, max-w-4xl para desktop. flex-col para organizar o scroll. */}
+      <DialogContent className="h-[90vh] max-h-[90vh] w-[95vw] md:w-full md:max-w-7xl flex flex-col p-4 md:p-6 overflow-hidden">
+        <DialogHeader className="space-y-2 text-center flex-shrink-0">
+          <DialogTitle className="text-xl md:text-2xl font-bold">
+            {moduleInfo?.title}
+          </DialogTitle>
 
-              <DialogDescription>
-                {moduleInfo?.category} — {formatToBrasilia(data.created_at)}
-              </DialogDescription>
-            </DialogHeader>
+          <DialogDescription>
+            {moduleInfo?.category} — {formatToBrasilia(data.created_at)}
+          </DialogDescription>
+        </DialogHeader>
 
-            <Separator />
+        <Separator className="my-2" />
+
+        {/* Alterado: flex-1 ocupa o espaço restante automaticamente, evitando overflow do modal */}
+        <ScrollArea className="min-h-full flex-1 w-full pr-4">
+          <div className="space-y-6 pb-6">
             <Output data={JSON.parse(data.output)} />
             {/* <AnalyzerOutput /> */}
           </div>

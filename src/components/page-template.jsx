@@ -13,6 +13,8 @@ import CandidateJobMatchOutput from "./outputs/candidate-job-match";
 import LinkedinGeneratorOutput from "./outputs/linkedin-generator";
 import ProfileGeneratorOutput from "./outputs/profile-generator";
 import ReviewerOutput from "./outputs/reviewer";
+import { Button } from "./ui/button";
+import { Star } from "lucide-react";
 
 const skeletonMap = {
   analyzer: AnalyzerSkeleton,
@@ -50,21 +52,29 @@ export default function PageTemplate({
 
   return (
     <div className="space-y-8">
-      <h1 className="flex items-center gap-3 text-3xl font-bold">
+      {/* Alterado: text-2xl no mobile, 3xl no desktop */}
+      <h1 className="flex items-center gap-3 text-2xl md:text-3xl font-bold">
         <span className={`${moduleInfo.color.text}`}>{icon}</span> {title}
       </h1>
 
-      <p className="opacity-80 w-3xl mb-4">{moduleInfo.description}</p>
+      {/* Alterado: w-3xl (fixo) para w-full max-w-3xl (fluido) */}
+      <p className="opacity-80 w-full max-w-3xl mb-4">
+        {moduleInfo.description}
+      </p>
+
+      {/* Alterado: w-3xl (fixo) para w-full max-w-3xl (fluido) */}
       <p
         className={
-          "w-3xl border-l-4 pl-3 mb-6 font-bold " + moduleInfo.color.border
+          "w-full max-w-3xl border-l-4 pl-3 mb-6 font-bold " +
+          moduleInfo.color.border
         }
       >
         {moduleInfo.instructions}
       </p>
 
+      {/* Alterado: Adicionado 'hidden lg:flex' para esconder o ícone flutuante em telas menores onde ele cobriria o texto */}
       <span
-        className={`fixed right-0 top-1/2 z-50 flex h-14 w-11 -translate-y-1/2 items-center justify-center rounded-l-full ${moduleInfo.color.bg} ${moduleInfo.color.text}`}
+        className={`hidden lg:flex fixed right-0 top-1/2 z-50 h-14 w-11 -translate-y-1/2 items-center justify-center rounded-l-full ${moduleInfo.color.bg} ${moduleInfo.color.text}`}
       >
         {icon}
       </span>
@@ -86,7 +96,20 @@ export default function PageTemplate({
         </div>
       )}
 
-      {!loading && output && <Output data={output} />}
+      {!loading && output && (
+        <div className="space-y-4">
+          <div>
+            <Button
+              className={
+                "bg-transparent border border-dashed border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-primary"
+              }
+            >
+              <Star /> Favoritar?
+            </Button>
+          </div>
+          <Output data={output} />
+        </div>
+      )}
     </div>
   );
 }

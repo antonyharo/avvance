@@ -28,7 +28,7 @@ export default function LinkedinGeneratorOutput({ data = mockLinkedinData }) {
   };
 
   return (
-    <Card className="container mx-auto p-8 border-dashed w-full max-w-4xl bg-card/50 gap-1">
+    <Card className="container mx-auto p-8 border-dashed w-full max-w-6xl bg-card/50 gap-1">
       {/* HEADER DO MÓDULO */}
       <header className="space-y-5">
         <div className="flex justify-between items-start">
@@ -86,9 +86,9 @@ export default function LinkedinGeneratorOutput({ data = mockLinkedinData }) {
                 <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
                   <button
                     onClick={() => handleCopy(headline.text, "Headline")}
-                    className="flex items-center gap-1 text-xs bg-primary text-primary-foreground px-2 py-1 rounded hover:bg-primary/90"
+                    className="flex items-center gap-1 text-xs bg-primary text-primary-foreground px-2 py-1 rounded hover:bg-primary/90 cursor-pointer"
                   >
-                    <Copy className="w-3 h-3" /> Copiar
+                    <Copy className="cursor-pointer w-3 h-3" /> Copiar
                   </button>
                 </div>
                 <span
@@ -120,7 +120,7 @@ export default function LinkedinGeneratorOutput({ data = mockLinkedinData }) {
               onClick={() => handleCopy(data.about.content, "Resumo")}
               className="absolute top-4 right-4 text-muted-foreground hover:text-primary transition-colors"
             >
-              <Copy className="w-4 h-4" />
+              <Copy className="cursor-pointer w-4 h-4" />
             </button>
 
             {/* Renderização segura do HTML gerado */}
