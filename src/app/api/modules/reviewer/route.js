@@ -111,6 +111,8 @@ export async function POST(req) {
 
     // Prompt Especializado em Auditoria ATS
     const prompt = `
+      [ATENÇÃO: ASSUMA QUE ESTAMOS EM FEV/2026!]
+      
       Atue como um Especialista em Recrutamento e Sistemas ATS (Applicant Tracking Systems).
       Analise o currículo anexo (PDF) de forma crítica e rigorosa.
       
